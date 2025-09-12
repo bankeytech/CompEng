@@ -1,1 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/inter');
 @import "tailwindcss";
+
+:root {
+ font-family: 'Inter', sans-serif;                                                
+}
