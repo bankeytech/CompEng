@@ -4,3 +4,33 @@
 :root {
  font-family: 'Inter', sans-serif;                                                
 }
+
+.my-checkbox {
+  /* Remove default style */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  background-color: transparent; /* default bg */
+}
+
+/* when checked */
+.my-checkbox:checked {
+  background-color: #914272; /* indigo for example */
+  border-color: #fff;
+}
+
+/* optional: add a checkmark */
+.my-checkbox:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
