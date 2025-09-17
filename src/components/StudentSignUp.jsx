@@ -3,28 +3,46 @@ import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa'
 import { FaInstagram, } from 'react-icons/fa6'
 import SidePic from "../assets/images/4219290 1.svg"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Form, Formik } from 'formik';
+import { lecturerSchema, studentSchema } from "../components/advSchema";
+import CustomCheckbox from "../components/CustomCheckbox";
+import CustomInput from "../components/CustomInput";
+import { Link, useNavigate } from "react-router-dom";
 
-const InputClass = "border-b-1 border-white/80 pb-2 placeholder:text-white/80 py-2 outline-none focus:ring-0"
 
-const combinedClass = "pb-2 placeholder:text-white/80 py-2 outline-none focus:ring-0";
+
 
 const StudentSignUp = () => {
-  const [visible, setVisible] = useState(false);
-  const [visible1, setVisible1] = useState(false);
-   const [userType, setUserType] = useState("student");
+  const [showStudentPassword, setShowStudentPassword] = useState(false);
+  const [showStudentConfirmPassword, setShowStudentConfirmPassword] = useState(false);
+  const [showLecturerPassword, setShowLecturerPassword] = useState(false);
+  const [showLecturerConfirmPassword, setShowLecturerConfirmPassword] = useState(false);
+
+  const studentInitialValues = { matricNo: "", email: "", password: "", confirmPassword: "", acceptedTos: false };
+  const lecturerInitialValues = { staffEmail: "", Lpassword: "", LconfirmPassword: "", acceptedTos: false };
+  const [userType, setUserType] = useState("student");
+  const navigate = useNavigate();
+
+  const onSubmit = async (values, actions) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  actions.resetForm();
+
+  navigate("/");
+ };
+
   return (
     <div className='w-full'>
       <div className='flex flex-wrap lg:flex-row-reverse '>
-            <div className='w-full lg:w-[45%] bg-[#F1F6F9] lg:pt-40 pt-6 hidden lg:block'>
-              <div className="ml-8">
+            <div className='relative w-full lg:w-[45%] bg-[#F1F6F9] lg:pt-40 pt-6 md:pt-14 hidden lg:block md:block'>
+              <div className="ml-8 md:ml-12">
                 <h2 className='text-5xl font-extrabold'>
                     Welcome to <br />Computer Engineering
                 </h2>
-                <h6 className='text-5xl p-0'>Student Portal</h6>
+                <h6 className='text-5xl p-0 md:py-2'>Student Portal</h6>
                 <h6 className='text-0.5xl text-black/70'>Login to access your account</h6>
               </div>
 
-              <div className='flex gap-4 text-3xl ml-8 mt-4 '>
+              <div className='flex gap-4 text-3xl ml-8 mt-4 md:hidden'>
                 <a href="#" 
                 target='_blank' 
                 rel='noopener noreferrer' 
@@ -53,13 +71,26 @@ const StudentSignUp = () => {
                 <FaLinkedin/>                
                 </a>
              </div>
+             <div className=" lg:hidden flex gap-5 items-center justify-center mt-6 absolute md:ml-12">
+                <a 
+                href="#"
+                className="py-2 px-15 rounded-[8vw] font-bold text-[3vw] bg-[#914272] text-white ">
+                  Sign Up
+                </a>
+
+                <a 
+                href="#"
+                className="py-2 px-17 rounded-[8vw] font-bold text-[3vw] border-2 border-[#914272] text-[#914272]">
+                  Login
+                </a>
+              </div>  
              <img src={SidePic} alt="img" className='w-full'/>
             </div>
 
 
             {/* MOBILE  */}
 
-            <div className='relative w-full h-[100vh] bg-[#F1F6F9] lg:hidden flex flex-col items-center justify-center'>
+            <div className='relative w-full h-[100vh] bg-[#F1F6F9] lg:hidden md:hidden flex flex-col items-center justify-center'>
               <div className="flex flex-col items-center justify-center text-center absolute top-30">
                 <h2 className='text-[14vw] leading-[14vw] font-extrabold p-3'>
                     Welcome to Computer Engineering
@@ -68,16 +99,16 @@ const StudentSignUp = () => {
                 <h6 className='text-[3vw] text-black/70 p-3'>Login to access your account</h6>
               </div>
 
-              <div className=" absolute bottom-[0vw]">
+              <div className=" absolute bottom-[0vw] md:top-1">
                   <img src={SidePic} alt="img" className='w-full'/>
               </div>             
                 
               <div className="flex flex-col gap-5 items-center justify-center mt-15 absolute top-[90vw]">
-                <a 
-                href="#"
+                <Link 
+                to="/StudentLogin"
                 className="border-2 border-[#914272] py-4 px-25 text-[#914272] rounded-[8vw] font-bold text-[5vw]">
                   Sign Up
-                </a>
+                </Link>
 
                 <a 
                 href="#"
@@ -96,105 +127,156 @@ const StudentSignUp = () => {
 
               {/* DESKTOP */}
 
-            <div className="relative w-full lg:w-[55%] bg-[#914272] lg:pt-50 pt-6 text-white pb-20 lg:pb-0 hidden lg:block">
+              <Formik               
+                initialValues={userType === "student" ? studentInitialValues : lecturerInitialValues}
+                validationSchema={userType === "student" ? studentSchema : lecturerSchema}
+                onSubmit={onSubmit}
+                enableReinitialize
+              >
+              {({ isSubmitting }) => (
+            <Form
+            className="relative w-full lg:w-[55%] bg-[#914272] lg:pt-50 pt-6 text-white pb-20 lg:pb-0 hidden lg:block md:hidden">
              <div className='lg:pl-40 pl-8'>
               <h2 className='text-5xl font-extrabold pb-2'>Sign Up</h2>
               <h6 className='text-white/90'>Fill in the Correct details below.</h6>
              </div>
 
              <div className="flex gap-3 pl-40 pt-5">
-                <a 
+                <button 
+                 type="button"
                  className={`${
                   userType === "student" ? "border-b-3 text-white font-bold" : " "
                  }`}
                  onClick={() => setUserType("student")}
                 >
                   Student
-                </a>
-                <a 
+                </button>
+                <button 
+                type="button"
                 className={`${
                   userType === "lecturer" ? "border-b-3 text-white font-bold" : " "
                   }`}
                   onClick={() => setUserType("lecturer")}
                 >
                   Lecturer
-                </a>
+                </button>
              </div>
 
-             <div className='pt-5 flex flex-col w-[65%] lg:pl-40 pl-8'>
+             <div className='pt-5 flex flex-col w-[68%] lg:pl-40 pl-8'>
                {userType === "student" ? (
-                <div className="border-b-1 border-white/80 ">
-                  <input 
-                  type="text" 
-                  placeholder='UTME or Matric Number' 
-                  className={`border-b-1 w-full ${combinedClass}`} />
+                <div className="">
+                  <CustomInput
+                    name="matricNo"
+                    type="text"
+                    placeholder="UTME or Matric Number"                    
+                  />
+                  
+                  <CustomInput         
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                  />
 
-                  <input 
-                  type="email" 
-                  placeholder='Email Address'
-                  className={combinedClass} />
-
-                </div>              
-                ) : (
-                  <input 
-                  type="email" 
-                  placeholder='Staff Email Address'
-                  className={InputClass} />
-                 
-                )}
-
-                <div className="relative border-b-1 border-white/80">
-                  <input 
-                  type={visible ? "text": "password"} 
-                  placeholder='Password'
-                  className={combinedClass} />
+                  <div className="relative ">
+                  <CustomInput 
+                    name="password" 
+                    type={showStudentPassword ? "text": "password"} 
+                    placeholder='Password'
+                 />
 
                   <button
                     type="button"
-                    onClick={() => setVisible((v) => !v)}
-                    aria-label={visible ? "Hide password" : "Show password"}
-                    title={visible ? "Hide password" : "Show password"}
+                    onClick={() => setShowStudentPassword((v) => !v)}
+                    aria-label={showStudentPassword ? "Hide password" : "Show password"}
+                    title={showStudentPassword ? "Hide password" : "Show password"}
                     className="absolute inset-y-0 -right-2 flex items-center justify-center px-2 text-lg select-none"
                   >
-                    {visible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                    {showStudentPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                   </button>
                 </div>
                 
-                <div className="relative border-b-1 border-white/80">
-                  <input 
-                  type={visible1 ? "text": "password"} 
-                  placeholder='Confirm Password'
-                  className={combinedClass} />
+                <div className="relative">
+                  <CustomInput
+                    name="confirmPassword"
+                    type={showStudentConfirmPassword ? "text": "password"} 
+                    placeholder='Confirm Password'
+                  />
 
                   <button
                     type="button"
-                    onClick={() => setVisible1((v) => !v)}
-                    aria-label={visible1 ? "Hide password" : "Show password"}
-                    title={visible1 ? "Hide password" : "Show password"}
+                    onClick={() => setShowStudentConfirmPassword((v) => !v)}
+                    aria-label={showStudentConfirmPassword ? "Hide password" : "Show password"}
+                    title={showStudentConfirmPassword ? "Hide password" : "Show password"}
                     className="absolute inset-y-0 -right-2 flex items-center justify-center px-2 text-lg select-none"
                   >
-                    {visible1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                    {showStudentConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                   </button>
                 </div>
 
-                {/* <input 
-                type="password" 
-                placeholder='Confirm Password'
-                className={InputClass} /> */}
+                </div>              
+                ) : (
+                <div className="">
 
+                  <CustomInput         
+                    name="staffEmail"
+                    type="email"
+                    placeholder="Staff Email Address"
+                  />
+
+                  <div className="relative">
+                    <CustomInput 
+                      name="Lpassword" 
+                      type={showLecturerPassword ? "text": "password"} 
+                      placeholder='Password'
+                  />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowLecturerPassword((v) => !v)}
+                      aria-label={showLecturerPassword ? "Hide password" : "Show password"}
+                      title={showLecturerPassword ? "Hide password" : "Show password"}
+                      className="absolute inset-y-0 -right-2 flex items-center justify-center px-2 text-lg select-none"
+                    >
+                      {showLecturerPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                    </button>
+                  </div>
+                  
+                  <div className="relative">
+                    <CustomInput
+                      name="LconfirmPassword"
+                      type={showLecturerConfirmPassword ? "text": "password"} 
+                      placeholder='Confirm Password'
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowLecturerConfirmPassword((v) => !v)}
+                      aria-label={showLecturerConfirmPassword? "Hide password" : "Show password"}
+                      title={showLecturerConfirmPassword ? "Hide password" : "Show password"}
+                      className="absolute inset-y-0 -right-2 flex items-center justify-center px-2 text-lg select-none"
+                    >
+                      {showLecturerConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                    </button>
+                  </div>
+
+                </div>
+                 
+                )}
+                
                 <span className='py-4 flex items-center text-[10px] text-white/60'>
                   Are you a robot? Verify here! 
-                  <input 
-                  type="checkbox" 
-                  className='my-checkbox ml-3' 
-                  required />
+                  <CustomCheckbox 
+                    name="acceptedTos" 
+                    type="checkbox"                     
+                 />
                 </span>
              </div>
               <div className='lg:pl-40 pl-8'>
                 <button 
-                type="button" 
+                disabled={isSubmitting}
+                type="submit" 
                 className='bg-white py-2 px-30 text-black rounded-xl font-bold mt-5'>
-                Sign Up
+                {isSubmitting ? "Signing Up..." : "Sign Up"}
                </button> 
               </div>
 
@@ -203,7 +285,9 @@ const StudentSignUp = () => {
                  2025 © FUTA Department of Computer Engineering
                 </a>
               </div>
-            </div>  
+            </Form>  
+             )}
+           </Formik>
       </div>  
     </div>
   )
