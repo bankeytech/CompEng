@@ -49,3 +49,10 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: white !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
+
+.mobilePic{
+  background: url(./assets/images/medium-shot-students-with-laptop.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

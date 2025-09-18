@@ -1,13 +1,25 @@
-import { Form, Formik } from "formik";
-import { studentSchema } from "../components/advSchema";
+import { useState } from "react";
+import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa'
+import { FaInstagram, } from 'react-icons/fa6'
+import SidePic from "../assets/images/4219290 1.svg"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Form, Formik } from 'formik';
+import { lecturerSchema, studentSchema } from "../components/advSchema";
 import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
-import CustomSelect from "../components/CustomSelect";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 
 const StudentLogin = () => {
+  const [showStudentPassword, setShowStudentPassword] = useState(false);
+  const [showLecturerPassword, setShowLecturerPassword] = useState(false);
+
+  const studentInitialValues = { matricNo: "", email: "", password: "", confirmPassword: "", acceptedTos: false };
+  const lecturerInitialValues = { staffEmail: "", Lpassword: "", LconfirmPassword: "", acceptedTos: false };
+
+  const [userType, setUserType] = useState("student");
   const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
@@ -16,59 +28,230 @@ const StudentLogin = () => {
 
   navigate("/");
  };
-  
 
-  
   return (
-    <Formik
-      
-      initialValues={{ matricNo: "", email:"", staffEmail:"", password:"",
-         confirmPassword:"", jobType: "", acceptedTos: false }}
-      validationSchema={studentSchema}
-      onSubmit={onSubmit}
-    >
-      {({ isSubmitting }) => (
-        <Form
-         className="w-full h-screen flex flex-col items-center justify-center"
-        >
-          <div 
-             className="border-2 border-red-700 flex flex-col items-center justify-center"
-          >
-            <CustomInput
-            name="matricNo"
-            type="text"
-            placeholder="UTME or Matric Number"
-            
-          />
-          <CustomInput         
-            name="email"
-            type="email"
-            placeholder="Email Address"
-          />
-          <CustomInput            
-            name="staffEmail"
-            type="email"
-            placeholder="Staff Email Address"
-          />
-          <CustomInput           
-            name="password"
-            type="password"
-            placeholder="Enter your password "
-          />
-          <CustomInput            
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirm your Password"
-          />
-          <CustomCheckbox type="checkbox" name="acceptedTos" />
-          <button disabled={isSubmitting} type="submit">
-            Submit
-          </button>
-          </div>
-          
-        </Form>
-      )}
-    </Formik>
-  );
-};
-export default StudentLogin;
+    <div className='w-full h-screen'>
+      <div className='flex flex-wrap lg:flex-row-reverse '>
+            <div className='relative w-full lg:w-[45%] bg-[#F1F6F9] lg:pt-15 pt-6 md:pt-14 hidden lg:block md:block'>
+              <div className="ml-8 md:ml-12">
+                <h2 className='text-5xl font-extrabold'>
+                    Welcome to <br />Computer Engineering
+                </h2>
+                <h6 className='text-5xl p-0 md:py-2'>Student Portal</h6>
+                <h6 className='text-0.5xl text-black/70'>Login to access your account</h6>
+              </div>
+
+              <div className='flex gap-4 text-3xl ml-12 mt-4 lg:flex md:hidden'>
+                <a href="#" 
+                target='_blank' 
+                rel='noopener noreferrer' 
+                aria-label='LinkedIn'>
+                <FaFacebookSquare/>
+                </a>
+
+                <a href="#" 
+                target='_blank' 
+                rel='noopener noreferrer' 
+                aria-label='GitHub'>
+                <FaInstagram/>
+                </a>
+                
+                <a href="#" 
+                target='_blank' 
+                rel='noopener noreferrer' 
+                aria-label='Instagram'>                
+                <FaTwitterSquare/>
+                </a>
+
+                <a href="#" 
+                target='_blank' 
+                rel='noopener noreferrer' 
+                aria-label='Twitter'>
+                <FaLinkedin/>                
+                </a>
+             </div>
+             <div className=" lg:hidden flex gap-5 items-center justify-center mt-6 absolute md:ml-12">
+                <Link 
+                to="/MobileSignUp"
+                className="py-2 px-15 rounded-[8vw] font-bold text-[3vw] bg-[#914272] text-white ">
+                  Sign Up
+                </Link>
+
+                <Link 
+                to="/StudentLogin"
+                className="py-2 px-17 rounded-[8vw] font-bold text-[3vw] border-2 border-[#914272] text-[#914272]">
+                  Login
+                </Link>
+              </div>  
+             <img src={SidePic} alt="img" className='w-full'/>
+            </div>
+
+
+            {/* MOBILE  */}
+
+            <div className='relative w-full h-[100vh] bg-[#F1F6F9] lg:hidden md:hidden flex flex-col items-center justify-center'>
+              <div className="flex flex-col items-center justify-center text-center absolute top-30">
+                <h2 className='text-[14vw] leading-[14vw] font-extrabold p-3'>
+                    Welcome to Computer Engineering
+                </h2>
+                <h6 className='text-[9vw] leading-[9vw] p-3'>Student Portal</h6>
+                <h6 className='text-[3vw] text-black/70 p-3'>Login to access your account</h6>
+              </div>
+
+              <div className=" absolute bottom-[0vw] md:top-1">
+                  <img src={SidePic} alt="img" className='w-full'/>
+              </div>             
+                
+              <div className="flex flex-col gap-5 items-center justify-center mt-15 absolute top-[90vw]">
+                <Link 
+                to="/MobileSignUp"
+                className="border-2 border-[#914272] py-4 px-25 text-[#914272] rounded-[8vw] font-bold text-[5vw]">
+                  Sign Up
+                </Link>
+
+                <Link 
+                to="/StudentLogin"
+                className="bg-[#914272] py-4 px-27 text-white rounded-[8vw] font-bold text-[5vw]">
+                  Login
+                </Link>
+              </div>            
+
+             <div className="absolute bottom-3">
+                <a className='text-[12px]'>
+                 2025 © FUTA Department of Computer Engineering
+                </a>
+              </div>
+             
+            </div>
+
+              {/* DESKTOP */}
+
+              <Formik               
+                initialValues={userType === "student" ? studentInitialValues : lecturerInitialValues}
+                validationSchema={userType === "student" ? studentSchema : lecturerSchema}
+                onSubmit={onSubmit}
+                enableReinitialize
+              >
+              {({ isSubmitting }) => (
+            <Form
+            className="relative w-full lg:w-[55%] bg-[#914272] lg:pt-25 pt-6
+             text-white pb-20 lg:pb-0 hidden lg:block md:hidden">
+
+              <div className="flex gap-3 pl-40 pb-5">
+                <button 
+                 type="button"
+                 className={`${
+                  userType === "student" ? "border-b-3 text-white font-bold" : " "
+                 }`}
+                 onClick={() => setUserType("student")}
+                >
+                  Student
+                </button>
+                <button 
+                type="button"
+                className={`${
+                  userType === "lecturer" ? "border-b-3 text-white font-bold" : " "
+                  }`}
+                  onClick={() => setUserType("lecturer")}
+                >
+                  Lecturer
+                </button>
+             </div>
+
+             <div className='lg:pl-40 pl-8 pb-3'>
+              <h2 className='text-5xl font-extrabold pb-2'>Login</h2>
+              <h6 className='text-white/90 text-[1vw]'>Enter your UTME[Fresher]/Matric No below.</h6>
+             </div>
+
+             
+
+             <div className='pt-5 flex flex-col w-[68%] lg:pl-40 pl-8'>
+               {userType === "student" ? (
+                <div className="">
+                  <CustomInput
+                    name="matricNo"
+                    type="text"
+                    placeholder="UTME or Matric Number"                    
+                  />
+ 
+                  <div className="relative ">
+                  <CustomInput 
+                    name="password" 
+                    type={showStudentPassword ? "text": "password"} 
+                    placeholder='Password'
+                 />
+
+                  <button
+                    type="button"
+                    onClick={() => setShowStudentPassword((v) => !v)}
+                    aria-label={showStudentPassword ? "Hide password" : "Show password"}
+                    title={showStudentPassword ? "Hide password" : "Show password"}
+                    className="absolute inset-y-0 -right-2 flex items-center justify-center px-2 text-lg select-none"
+                  >
+                    {showStudentPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                  </button>
+                </div>
+                
+                
+
+                </div>              
+                ) : (
+                <div className="">
+
+                  <CustomInput         
+                    name="staffEmail"
+                    type="email"
+                    placeholder="Staff Email Address"
+                  />
+
+                  <div className="relative">
+                    <CustomInput 
+                      name="Lpassword" 
+                      type={showLecturerPassword ? "text": "password"} 
+                      placeholder='Password'
+                  />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowLecturerPassword((v) => !v)}
+                      aria-label={showLecturerPassword ? "Hide password" : "Show password"}
+                      title={showLecturerPassword ? "Hide password" : "Show password"}
+                      className="absolute inset-y-0 -right-2 flex items-center justify-center px-2 text-lg select-none"
+                    >
+                      {showLecturerPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                    </button>
+                  </div>
+                  
+                  
+
+                </div>
+                 
+                )}
+                
+                <span className='pt-6 pb-4 flex items-center text-[0.9vw] text-white/60'>
+                  Forgot Password?                   
+                </span>
+             </div>
+              <div className='lg:pl-40 pl-8'>
+                <button 
+                disabled={isSubmitting}
+                type="submit" 
+                className='bg-black py-2 px-30 text-white rounded-xl font-bold '>
+                {isSubmitting ? "Logining..." : "Login"}
+               </button> 
+              </div>
+
+              <div className="absolute bottom-[0.7vw] pl-25">
+                <a className='text-[12px]'>
+                 2025 © FUTA Department of Computer Engineering
+                </a>
+              </div>
+            </Form>  
+             )}
+           </Formik>
+      </div>  
+    </div>
+  )
+}
+
+export default StudentLogin

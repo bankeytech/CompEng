@@ -31,9 +31,9 @@ const StudentSignUp = () => {
  };
 
   return (
-    <div className='w-full'>
+    <div className='w-full h-screen'>
       <div className='flex flex-wrap lg:flex-row-reverse '>
-            <div className='relative w-full lg:w-[45%] bg-[#F1F6F9] lg:pt-40 pt-6 md:pt-14 hidden lg:block md:block'>
+            <div className='relative w-full lg:w-[45%] bg-[#F1F6F9] lg:pt-15 pt-6 md:pt-14 hidden lg:block md:block'>
               <div className="ml-8 md:ml-12">
                 <h2 className='text-5xl font-extrabold'>
                     Welcome to <br />Computer Engineering
@@ -42,7 +42,7 @@ const StudentSignUp = () => {
                 <h6 className='text-0.5xl text-black/70'>Login to access your account</h6>
               </div>
 
-              <div className='flex gap-4 text-3xl ml-8 mt-4 md:hidden'>
+              <div className='flex gap-4 text-3xl ml-12 mt-4 lg:flex md:hidden'>
                 <a href="#" 
                 target='_blank' 
                 rel='noopener noreferrer' 
@@ -72,17 +72,17 @@ const StudentSignUp = () => {
                 </a>
              </div>
              <div className=" lg:hidden flex gap-5 items-center justify-center mt-6 absolute md:ml-12">
-                <a 
-                href="#"
+                <Link 
+                to="/MobileSignUp"
                 className="py-2 px-15 rounded-[8vw] font-bold text-[3vw] bg-[#914272] text-white ">
                   Sign Up
-                </a>
+                </Link>
 
-                <a 
-                href="#"
+                <Link 
+                to="/StudentLogin"
                 className="py-2 px-17 rounded-[8vw] font-bold text-[3vw] border-2 border-[#914272] text-[#914272]">
                   Login
-                </a>
+                </Link>
               </div>  
              <img src={SidePic} alt="img" className='w-full'/>
             </div>
@@ -105,16 +105,16 @@ const StudentSignUp = () => {
                 
               <div className="flex flex-col gap-5 items-center justify-center mt-15 absolute top-[90vw]">
                 <Link 
-                to="/StudentLogin"
+                to="/MobileSignUp"
                 className="border-2 border-[#914272] py-4 px-25 text-[#914272] rounded-[8vw] font-bold text-[5vw]">
                   Sign Up
                 </Link>
 
-                <a 
-                href="#"
+                <Link 
+                to="/MobileLogin"
                 className="bg-[#914272] py-4 px-27 text-white rounded-[8vw] font-bold text-[5vw]">
                   Login
-                </a>
+                </Link>
               </div>            
 
              <div className="absolute bottom-3">
@@ -135,7 +135,7 @@ const StudentSignUp = () => {
               >
               {({ isSubmitting }) => (
             <Form
-            className="relative w-full lg:w-[55%] bg-[#914272] lg:pt-50 pt-6 text-white pb-20 lg:pb-0 hidden lg:block md:hidden">
+            className="relative w-full lg:w-[55%] bg-[#914272] lg:pt-25 pt-6 text-white pb-20 lg:pb-0 hidden lg:block md:hidden">
              <div className='lg:pl-40 pl-8'>
               <h2 className='text-5xl font-extrabold pb-2'>Sign Up</h2>
               <h6 className='text-white/90'>Fill in the Correct details below.</h6>
@@ -280,7 +280,7 @@ const StudentSignUp = () => {
                </button> 
               </div>
 
-              <div className="absolute bottom-7 pl-25">
+              <div className="absolute bottom-[0.7vw] pl-25">
                 <a className='text-[12px]'>
                  2025 © FUTA Department of Computer Engineering
                 </a>
