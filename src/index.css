@@ -52,7 +52,7 @@ input:-webkit-autofill:focus {
 
 .mobilePic{
   background: url(./assets/images/medium-shot-students-with-laptop.svg);
-  background-position: center;
+  background-position:inherit;
   background-repeat: no-repeat;
   background-size: cover;
 }
