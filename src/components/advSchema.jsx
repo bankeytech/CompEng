@@ -44,3 +44,27 @@ export const studentSchema = yup.object().shape({
     .boolean()
     .oneOf([true], "Please accept the terms of service"),
 });
+
+export const lecturerLoginSchema = yup.object().shape({
+  staffEmail: yup
+  .string()
+  .email("Please enter a valid email")
+  .required("Required"),
+  Lpassword: yup
+    .string()
+    .min(5)
+    .matches(passwordRules, { message: "Please create a stronger password" })
+    .required("Required"),
+});
+
+export const studentLoginSchema = yup.object().shape({
+   matricNo: yup
+    .string()
+    .min(3, "Username must be at least 3 characters long")
+    .required("*required"),  
+   password: yup
+    .string()
+    .min(5)
+    .matches(passwordRules, { message: "Please create a stronger password" })
+    .required("*required"),
+});

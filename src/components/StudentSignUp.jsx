@@ -27,7 +27,7 @@ const StudentSignUp = () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 
-  navigate("/");
+  navigate("/StudentLogin");
  };
 
   return (

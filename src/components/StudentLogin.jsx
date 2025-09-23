@@ -4,7 +4,7 @@ import { FaInstagram, } from 'react-icons/fa6'
 import SidePic from "../assets/images/4219290 1.svg"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Form, Formik } from 'formik';
-import { lecturerSchema, studentSchema } from "../components/advSchema";
+import { lecturerLoginSchema, studentLoginSchema } from "../components/advSchema";
 import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,7 +26,7 @@ const StudentLogin = () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 
-  navigate("/");
+  navigate("/dashboard");
  };
 
   return (
@@ -128,7 +128,7 @@ const StudentLogin = () => {
 
               <Formik               
                 initialValues={userType === "student" ? studentInitialValues : lecturerInitialValues}
-                validationSchema={userType === "student" ? studentSchema : lecturerSchema}
+                validationSchema={userType === "student" ? studentLoginSchema : lecturerLoginSchema}
                 onSubmit={onSubmit}
                 enableReinitialize
               >
@@ -237,7 +237,7 @@ const StudentLogin = () => {
                 disabled={isSubmitting}
                 type="submit" 
                 className='bg-black py-2 px-30 text-white rounded-xl font-bold '>
-                {isSubmitting ? "Logining..." : "Login"}
+                {isSubmitting ? "Please wait..." : "Login"}
                </button> 
               </div>
 
