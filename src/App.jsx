@@ -11,7 +11,7 @@ import PersonalInfo from "./components/PersonalInfo"
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<PersonalInfo/>} />
       <Route path="/StudentSignUp" element={<StudentSignUp />} />
       <Route path="/StudentLogin" element={<StudentLogin />} />
       <Route path="/MobileSignUp" element={<MobileSignUp />} />

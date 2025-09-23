@@ -40,28 +40,20 @@ const Timetable = () => {
               <img src={TopPic} alt="img" className='w-[10vw]'/>
               <ul className=" hidden space-x-3 lg:flex flex-col gap-4 justify-start">
                 <li className="flex">
-                    <a rel="noopener noreferrer" 
-                        href="#" 
-                        className="text-white font-bold">
-                        Dashboard
-                    </a>
+                  <Link 
+                      to="/Dashboard" 
+                      className="text-white">
+                      Dashboard
+                  </Link>
                 </li>   
 
                 <li className="flex">
-                  <a rel="noopener noreferrer" 
-                      href="#" 
-                      className="text-white">
+                   <Link 
+                      to="/PersonalInfo" 
+                      className="text-white ">
                       Personal Info
-                  </a>
-                </li> 
-
-                <li className="flex">
-                  <a rel="noopener noreferrer" 
-                      href="#" 
-                      className="text-white">
-                      Class Info
-                  </a>
-                </li> 
+                  </Link>
+                </li>
 
                 <li className="flex">
                   <a rel="noopener noreferrer" 
@@ -72,11 +64,11 @@ const Timetable = () => {
                 </li>  
 
                 <li className="flex">
-                  <a rel="noopener noreferrer" 
-                      href="#" 
-                      className="text-white">
+                  <Link 
+                      to="/Timetable" 
+                      className="text-white font-bold">
                       Timetable
-                  </a>
+                  </Link>
                 </li> 
 
                 <li className="flex">
