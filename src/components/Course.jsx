@@ -72,7 +72,7 @@ export default function Course() {
               {[
                 { path: "/Dashboard", label: "Dashboard" },
                 { path: "/PersonalInfo", label: "Personal Info" },
-                { path: "#", label: "Courses", active: true },
+                { path: "/Course", label: "Courses", active: true },
                 { path: "/Timetable", label: "Timetable" },
                 { path: "#", label: "Result" },
               ].map((item, idx) => (

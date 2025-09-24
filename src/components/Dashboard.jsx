@@ -17,47 +17,24 @@ const Dashboard = () => {
         <header className="relative px-4 pr-13 py-8 text-gray-800 bg-[#914272] rounded-3xl ">
           <div className="container flex flex-col gap-10 mx-[2vw]">
             <img src={TopPic} alt="img" className='w-[10vw]'/>
-            <ul className=" hidden space-x-3 lg:flex flex-col gap-4 justify-start">
-              <li className="flex">
-                <Link 
-                  to="/Dashboard" 
-                  className="text-white font-bold">
-                  Dashboard
-              </Link>
-              </li>   
-
-              <li className="flex">
-                <Link 
-                    to="/PersonalInfo" 
-                    className="text-white ">
-                    Personal Info
-                </Link>
-              </li> 
-
-              <li className="flex">
-                <a rel="noopener noreferrer" 
-                    href="#" 
-                    className="text-white">
-                    Courses
-                </a>
-              </li>  
-
-              <li className="flex">
-                <Link 
-                    to="/Timetable" 
-                    className="text-white">
-                    Timetable
-                </Link>
-              </li> 
-
-              <li className="flex">
-                <a rel="noopener noreferrer" 
-                    href="#" 
-                    className="text-white">
-                    Result
-                </a>
-              </li>            
-            </ul>       
+            <ul className="hidden lg:flex flex-col gap-4 justify-start">
+              {[
+                { path: "/Dashboard", label: "Dashboard", active: true  },
+                { path: "/PersonalInfo", label: "Personal Info" },
+                { path: "/Course", label: "Courses"},
+                { path: "/Timetable", label: "Timetable" },
+                { path: "#", label: "Result" },
+              ].map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={item.path}
+                    className={`text-white ${item.active ? "font-bold" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>      
           </div>
 
           <div className='flex mx-[2vw] absolute bottom-[2vw]'>
