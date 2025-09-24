@@ -25,7 +25,7 @@ const Timetable = () => {
                   <img src={ProfilePic} alt="img" />
                   <div className='flex flex-col'>
                     <h4 className='font-semibold'>{profile.fullName}</h4>
-                    <h6 className='text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
+                    <h6 className='text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
                   </div>
                 </div>
                 <div className='flex text-[2vw] gap-3'>
@@ -121,7 +121,7 @@ const Timetable = () => {
                             </td>
                             <td className={`flex flex-col items-center text-black ${Th}`}>
                                 <span className='border-1 border-black w-4 h-4 bg-green-600 rounded-4xl'></span>
-                                <span>GNS 101</span>
+                                <span>CPE 501</span>
                             </td>
                             <td className={`${Th}`}>
                                 
@@ -146,8 +146,9 @@ const Timetable = () => {
                             <td className={`${Th}`}>
                                 
                             </td>
-                            <td className={`${Th}`}>
-                                
+                            <td  className={`flex flex-col items-center text-black ${Th}`}>
+                               <span className='border-1 border-black w-4 h-4 bg-green-600 rounded-4xl'></span>
+                               <span>EEE 531 </span> 
                             </td>
                             <td className={`border-r border-gray-300 ${Th}`}>
                                 
@@ -162,7 +163,7 @@ const Timetable = () => {
                             </td>
                             <td className={`flex flex-col items-center text-black ${Th}`}>
                               <span className='border-1 border-black w-4 h-4 bg-[#FF0000] rounded-4xl'></span>
-                              <span>CHE 101</span>
+                              <span>CPE 511</span>
                             </td>
                             <td className={`${Th}`}>
                                 
@@ -180,7 +181,7 @@ const Timetable = () => {
                             </th>
                             <td className={`flex flex-col items-center text-black ${Th}`}>
                               <span className='border-1 border-black w-4 h-4 bg-[#EAFF00] rounded-4xl'></span>
-                              <span>MTS 101</span>
+                              <span>CPE 521</span>
                             </td>
                             <td className={`${Th}`}>
                                 
@@ -205,8 +206,9 @@ const Timetable = () => {
                             <td className={`${Th}`}>
                                 
                             </td>
-                            <td className={`${Th}`}>
-                                
+                            <td  className={`flex flex-col items-center text-black ${Th}`}>
+                               <span className='border-1 border-black w-4 h-4 bg-green-600 rounded-4xl'></span>
+                               <span>EEE 511 </span> 
                             </td>
                             <td className={`${Th}`}>
                                 

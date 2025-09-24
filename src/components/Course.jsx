@@ -122,7 +122,7 @@ export default function Course() {
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
                   <h4 className='font-semibold'>{profile.fullName}</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>

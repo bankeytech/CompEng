@@ -72,7 +72,7 @@ const Dashboard = () => {
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
                   <h4 className='font-semibold'>{profile.fullName}</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>
@@ -113,7 +113,7 @@ const Dashboard = () => {
             flex flex-col justify-center gap-8 shadow-md focus:shadow-lg transition duration-200'>
               <h4 className={Basic}>
                 Courses
-                <span>12</span>
+                <span>5</span>
               </h4>
               <h4 className={Basic}>
                 CGPA
@@ -121,7 +121,7 @@ const Dashboard = () => {
               </h4>
               <h4 className={Basic}>
                 Semester
-                <span>2nd</span>
+                <span>1st</span>
               </h4>
             </div>
                   
@@ -132,8 +132,8 @@ const Dashboard = () => {
             
             <div>             
               <ul className='list-disc pl-30 font-thin'>
-                <li className=''>CHE 101 Assignment</li>
-                <li>PHY 202 Test </li>
+                <li className=''>CPE 501 Assignment</li>
+                <li>EEE 505 Test </li>
                 <li>Late Registration</li>
               </ul>
             </div>

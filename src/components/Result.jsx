@@ -74,7 +74,7 @@ export default function Result() {
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
                   <h4 className='font-semibold'>{profile.fullName}</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>
@@ -104,27 +104,27 @@ export default function Result() {
                       <h4>Marks</h4>
                     </div>
                     <div className="grid grid-cols-3 gap-3 font-thin  w-full">
-                      <h4>CPE 201</h4>
+                      <h4>CPE 501</h4>
                       <h4>3</h4>
                       <h4>72A</h4>
                     </div>
                     <div className="grid grid-cols-3 gap-3 font-thin  w-full">
-                      <h4>CPE 203</h4>
+                      <h4>CPE 503</h4>
                       <h4>2</h4>
                       <h4>70A</h4>
                     </div>
                     <div className="grid grid-cols-3 gap-3 font-thin  w-full">
-                      <h4>MTS 201</h4>
+                      <h4>MTS 507</h4>
                       <h4>3</h4>
                       <h4>69B</h4>
                     </div>
                     <div className="grid grid-cols-3 gap-3 font-thin  w-full">
-                      <h4>GNS 201</h4>
+                      <h4>GNS 505</h4>
                       <h4>2</h4>
                       <h4>79A</h4>
                     </div>
                     <div className="grid grid-cols-3 gap-3 font-thin  w-full">
-                      <h4>EEE 201</h4>
+                      <h4>EEE 509</h4>
                       <h4>3</h4>
                       <h4>80A</h4>
                     </div>

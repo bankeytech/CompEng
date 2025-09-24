@@ -104,7 +104,7 @@ const PersonalInfo = () => {
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
                   <h4 className='font-semibold'>{profile.fullName}</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>
@@ -153,14 +153,14 @@ const PersonalInfo = () => {
                     <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 w-full">
                       <h6>Degree</h6>
                       <h6>Department</h6>
-                      <h6 className='text-[0.9vw]'>Btech</h6>
+                      <h6 className='text-[0.9vw]'>B.eng</h6>
                       <h6 className='text-[0.9vw]'>Computer Engineering</h6>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 w-full">
                       <h6>Semester</h6>
                       <h6>Matric Number</h6>
-                      <h6 className='text-[0.9vw]'>2</h6>
-                      <h6 className='text-[0.9vw]'>CPE/30/0011</h6>
+                      <h6 className='text-[0.9vw]'>1</h6>
+                      <h6 className='text-[0.9vw]'>{profile.matricNo}</h6>
                     </div>
                   </div>
 
@@ -219,9 +219,6 @@ const PersonalInfo = () => {
                     <li>Competitive Programming</li>
                     <li>Web development</li>
                   </ul>
-                  
-
-                    
 
                 </div>            
               </div>
@@ -278,7 +275,7 @@ const PersonalInfo = () => {
                     </span>
                   </div>
                   <div className='py-8 flex flex-col items-center justify-center'>
-                    <h3 className='font-bold text-[1.6vw]'>Kasim Balogun</h3>
+                    <h3 className='font-bold text-[1.6vw]'>{profile.fullName}</h3>
                     <h3 className='rounded-[4vw] bg-gray-100 px-8 py-2 shadow-lg focus:shadow-lg'>Student</h3>
                   </div>
 
@@ -292,7 +289,7 @@ const PersonalInfo = () => {
                   <div className='pt-2'>
                    <textarea rows={8} 
                       className='rounded-[0.7vw] border-2 border-gray-100 placeholder:text-[1.1vw]  p-2'
-                      placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies'></textarea>
+                      placeholder=''></textarea>
                   </div>
 
                 </div>
