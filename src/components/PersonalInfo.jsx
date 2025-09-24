@@ -4,8 +4,6 @@ import TopPic from "../assets/images/image 1.svg"
 import ProfilePic from "../assets/images/image 2.svg"
 import { MdSettings } from "react-icons/md";
 import { MdNotificationsNone} from "react-icons/md";
-import SidePic from "../assets/images/4219290 1.svg"
-import { FiCalendar } from "react-icons/fi";
 import Elic1 from "../assets/images/Ellipse 3.svg"
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FiMaximize2, FiEdit } from "react-icons/fi";
@@ -134,7 +132,7 @@ const PersonalInfo = () => {
         </div>
 
         <div className='flex gap-4'>
-          <div className='flex flex-col w-[65%]'>
+          <div className='flex flex-col w-[68%]'>
             <div className='bg-[#914272] rounded-[1.1vw] flex items-center justify-between px-5 py-2 pl-7 text-white pb-8'>
               <div className='flex flex-col w-full'>
                 <div >
@@ -280,7 +278,7 @@ const PersonalInfo = () => {
             </div>
 
           </div>
-          <div className='w-[35%] '>
+          <div className='w-[33%] '>
             <div className='container bg-[#7D7D7D]/20 rounded-[1.1vw] flex flex-col items-center justify-between
              p-1 text-white  shadow-2xl focus:shadow-lg'>
               <div className='flex flex-col w-full px-4 pt-4 gap-6'>

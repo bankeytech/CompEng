@@ -7,11 +7,12 @@ import Home from "./components/Home"
 import Dashboard from "./components/Dashboard";
 import Timetable from "./components/Timetable"
 import PersonalInfo from "./components/PersonalInfo"
+import Course from "./components/Course"
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<PersonalInfo/>} />
+      <Route path="/" element={<Course/>} />
       <Route path="/StudentSignUp" element={<StudentSignUp />} />
       <Route path="/StudentLogin" element={<StudentLogin />} />
       <Route path="/MobileSignUp" element={<MobileSignUp />} />
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/Dashboard" element={<Dashboard/>}/>
       <Route path="/Timetable" element={<Timetable/>}/>
       <Route path="/PersonalInfo" element={<PersonalInfo/>}/>
+      <Route path="/Course" element={<Course/>}/>
     </Routes>
   )
 }
