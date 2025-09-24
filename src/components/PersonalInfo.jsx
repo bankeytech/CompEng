@@ -62,7 +62,7 @@ const PersonalInfo = () => {
                 { path: "/PersonalInfo", label: "Personal Info", active: true },
                 { path: "/Course", label: "Courses" },
                 { path: "/Timetable", label: "Timetable" },
-                { path: "#", label: "Result" },
+                { path: "/Result", label: "Result" },
               ].map((item, idx) => (
                 <li key={idx}>
                   <Link

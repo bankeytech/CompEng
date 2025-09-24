@@ -17,7 +17,6 @@ const Fid =
   "w-[22vw] py-3 px-5 text-sm rounded-[4vw] focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 shadow-lg focus:shadow-md transition duration-200";
 
   const Bbt = "flex flex-col items-center justify-center py-22 font-bold"
-  
 export default function Course() {
   // <-- CHANGE THIS to true if you want sessionStorage (tab-only). 
   // Set to false to use localStorage (persists across browser restarts).
@@ -66,7 +65,7 @@ export default function Course() {
   };
 
   const profile = useStudentProfile();
-    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+      if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
     <div className="relative p-10 flex">
@@ -81,7 +80,7 @@ export default function Course() {
                 { path: "/PersonalInfo", label: "Personal Info" },
                 { path: "/Course", label: "Courses", active: true },
                 { path: "/Timetable", label: "Timetable" },
-                { path: "#", label: "Result" },
+                { path: "/Result", label: "Result" },
               ].map((item, idx) => (
                 <li key={idx}>
                   <Link
@@ -123,7 +122,7 @@ export default function Course() {
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
                   <h4 className='font-semibold'>{profile.fullName}</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>{profile.level}  Level, Btech , CPE</h6>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>

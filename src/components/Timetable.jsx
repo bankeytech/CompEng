@@ -50,7 +50,7 @@ const Timetable = () => {
                   { path: "/PersonalInfo", label: "Personal Info" },
                   { path: "/Course", label: "Courses"},
                   { path: "/Timetable", label: "Timetable", active: true  },
-                  { path: "#", label: "Result" },
+                  { path: "/Result", label: "Result" },
                 ].map((item, idx) => (
                   <li key={idx}>
                     <Link

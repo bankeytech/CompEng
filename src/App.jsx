@@ -8,6 +8,7 @@ import Dashboard from "./components/Dashboard";
 import Timetable from "./components/Timetable"
 import PersonalInfo from "./components/PersonalInfo"
 import Course from "./components/Course"
+import Result from "./components/Result"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/Timetable" element={<Timetable/>}/>
       <Route path="/PersonalInfo" element={<PersonalInfo/>}/>
       <Route path="/Course" element={<Course/>}/>
+      <Route path="/Result" element={<Result/>} />
     </Routes>
   )
 }

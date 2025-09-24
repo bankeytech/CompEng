@@ -30,7 +30,7 @@ const Dashboard = () => {
                 { path: "/PersonalInfo", label: "Personal Info" },
                 { path: "/Course", label: "Courses"},
                 { path: "/Timetable", label: "Timetable" },
-                { path: "#", label: "Result" },
+                { path: "/Result", label: "Result" },
               ].map((item, idx) => (
                 <li key={idx}>
                   <Link
