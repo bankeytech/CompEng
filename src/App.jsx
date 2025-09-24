@@ -12,7 +12,7 @@ import Course from "./components/Course"
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Course/>} />
+      <Route path="/" element={<Home/>} />
       <Route path="/StudentSignUp" element={<StudentSignUp />} />
       <Route path="/StudentLogin" element={<StudentLogin />} />
       <Route path="/MobileSignUp" element={<MobileSignUp />} />

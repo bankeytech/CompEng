@@ -60,7 +60,7 @@ const MobileSignUp = () => {
               }`}
               onClick={() => setUserType("lecturer")}
           >
-              Lecturer
+              Admin
           </button>
         </div>
 

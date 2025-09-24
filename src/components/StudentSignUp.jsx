@@ -158,7 +158,7 @@ const StudentSignUp = () => {
                   }`}
                   onClick={() => setUserType("lecturer")}
                 >
-                  Lecturer
+                  Admin
                 </button>
              </div>
 

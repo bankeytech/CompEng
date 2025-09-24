@@ -154,7 +154,7 @@ const StudentLogin = () => {
                   }`}
                   onClick={() => setUserType("lecturer")}
                 >
-                  Lecturer
+                  Admin
                 </button>
              </div>
 
