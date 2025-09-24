@@ -10,10 +10,14 @@ import {
 import { HiOutlineDotsHorizontal, HiDotsVertical } from "react-icons/hi";
 import { FiEdit } from "react-icons/fi";
 import { Formik, Field, Form } from "formik";
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
 
 const Fid =
   "w-[22vw] py-3 px-5 text-sm rounded-[4vw] focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 shadow-lg focus:shadow-md transition duration-200";
 
+  const Bbt = "flex flex-col items-center justify-center py-22 font-bold"
+  
 export default function Course() {
   // <-- CHANGE THIS to true if you want sessionStorage (tab-only). 
   // Set to false to use localStorage (persists across browser restarts).
@@ -60,6 +64,9 @@ export default function Course() {
       return next;
     });
   };
+
+  const profile = useStudentProfile();
+    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
     <div className="relative p-10 flex">
@@ -115,8 +122,8 @@ export default function Course() {
               <div className='flex items-center gap-3'>
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
-                  <h4 className='font-semibold'>Kasim Balogun</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>300 Level, Btech , CPE</h6>
+                  <h4 className='font-semibold'>{profile.fullName}</h4>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level}  Level, Btech , CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>

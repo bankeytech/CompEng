@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa'
 import { FaInstagram, } from 'react-icons/fa6'
+
 import SidePic from "../assets/images/4219290 1.svg"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Form, Formik } from 'formik';
+
 import { lecturerSchema, studentSchema } from "../components/advSchema";
 import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
+
 import { Link, useNavigate } from "react-router-dom";
+import { auth, db } from "../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import { doc, setDoc } from "firebase/firestore";
 
 
 
@@ -18,17 +25,56 @@ const StudentSignUp = () => {
   const [showLecturerPassword, setShowLecturerPassword] = useState(false);
   const [showLecturerConfirmPassword, setShowLecturerConfirmPassword] = useState(false);
 
-  const studentInitialValues = { matricNo: "", email: "", password: "", confirmPassword: "", acceptedTos: false };
+  const studentInitialValues = { matricNo: "", email: "", password: "",  fullName: "",
+  level: "", confirmPassword: "", acceptedTos: false };
   const lecturerInitialValues = { staffEmail: "", Lpassword: "", LconfirmPassword: "", acceptedTos: false };
   const [userType, setUserType] = useState("student");
   const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
+    try {
+      if (userType === "student") {
+        const fakeEmail = values.matricNo + "@futa.com"; // fake email
 
-  navigate("/StudentLogin");
- };
+        const userCred = await createUserWithEmailAndPassword(
+          auth,
+          fakeEmail,
+          values.password
+        );
+
+        await setDoc(doc(db, "students", userCred.user.uid), {
+          matricNo: values.matricNo,
+          email: fakeEmail,
+          role: "student",
+          fullName: values.fullName, 
+          level: values.level,
+        });
+
+        navigate("/StudentLogin");
+      }
+
+      if (userType === "lecturer") {
+        const userCred = await createUserWithEmailAndPassword(
+          auth,
+          values.staffEmail,
+          values.Lpassword
+        );
+
+        await setDoc(doc(db, "lecturers", userCred.user.uid), {
+          staffEmail: values.staffEmail,
+          role: "lecturer",
+        });
+
+        navigate("/StudentLogin");
+      }
+    } catch (error) {
+      console.error("Signup Error:", error.message);
+      alert(error.message);
+    }
+
+    actions.setSubmitting(false);
+  };
+
 
   return (
     <div className='w-full h-screen'>
@@ -84,7 +130,7 @@ const StudentSignUp = () => {
                   Login
                 </Link>
               </div>  
-             <img src={SidePic} alt="img" className='w-full'/>
+             <img src={SidePic} alt="img" className='w-full mt-18'/>
             </div>
 
 
@@ -164,11 +210,23 @@ const StudentSignUp = () => {
 
              <div className='pt-5 flex flex-col w-[68%] lg:pl-40 pl-8'>
                {userType === "student" ? (
-                <div className="">
+                <div className="flex flex-col gap-2">
                   <CustomInput
+                    name="fullName"
+                    type="text"
+                    placeholder="Full Name"
+                  />
+
+                   <CustomInput
                     name="matricNo"
                     type="text"
                     placeholder="UTME or Matric Number"                    
+                  />
+
+                  <CustomInput
+                    name="level"
+                    type="text"
+                    placeholder="Level (e.g. 300)"
                   />
                   
                   <CustomInput         
@@ -195,7 +253,7 @@ const StudentSignUp = () => {
                   </button>
                 </div>
                 
-                <div className="relative">
+                <div className="relative pt-2">
                   <CustomInput
                     name="confirmPassword"
                     type={showStudentConfirmPassword ? "text": "password"} 
@@ -215,7 +273,7 @@ const StudentSignUp = () => {
 
                 </div>              
                 ) : (
-                <div className="">
+                <div className="flex flex-col gap-2">
 
                   <CustomInput         
                     name="staffEmail"
@@ -241,7 +299,7 @@ const StudentSignUp = () => {
                     </button>
                   </div>
                   
-                  <div className="relative">
+                  <div className="relative pt-2">
                     <CustomInput
                       name="LconfirmPassword"
                       type={showLecturerConfirmPassword ? "text": "password"} 
@@ -271,7 +329,7 @@ const StudentSignUp = () => {
                  />
                 </span>
              </div>
-              <div className='lg:pl-40 pl-8'>
+              <div className='lg:pl-40 pl-8 pb-18'>
                 <button 
                 disabled={isSubmitting}
                 type="submit" 

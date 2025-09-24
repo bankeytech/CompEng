@@ -7,8 +7,12 @@ import { MdNotificationsNone} from "react-icons/md";
 import Elic1 from "../assets/images/Ellipse 3.svg"
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FiMaximize2, FiEdit } from "react-icons/fi";
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
 
 const Basic = "flex items-center justify-between gap-25 text-gray-500 font-light text-[1.3vw]"
+
+const Bbt = "flex flex-col items-center justify-center py-22 font-bold"
 
 const CustomInput = ({ label, type = "text", name }) => (
   <div className="flex flex-col gap-1">
@@ -43,6 +47,9 @@ const CustomSelect = ({ label, name, options }) => (
 
 
 const PersonalInfo = () => {
+  const profile = useStudentProfile();
+    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+
   return (
     <div className='relative p-10 flex'>
       <div className=' relative hidden lg:flex'>
@@ -96,8 +103,8 @@ const PersonalInfo = () => {
               <div className='flex items-center gap-3'>
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
-                  <h4 className='font-semibold'>Kasim Balogun</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>300 Level, Btech , CPE</h6>
+                  <h4 className='font-semibold'>{profile.fullName}</h4>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>

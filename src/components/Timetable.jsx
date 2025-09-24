@@ -4,10 +4,16 @@ import { MdSettings } from "react-icons/md";
 import { MdNotificationsNone} from "react-icons/md";
 import TopPic from "../assets/images/image 1.svg"
 import { Link } from "react-router-dom";
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
 
 const Th = "px-6 py-3 border-b border-gray-300";
 
+const Bbt = "flex flex-col items-center justify-center py-22 font-bold"
+
 const Timetable = () => {
+  const profile = useStudentProfile();
+    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
   return (
     <div className='relative'>
       <div>
@@ -18,8 +24,8 @@ const Timetable = () => {
                 <div className='flex items-center gap-3'>
                   <img src={ProfilePic} alt="img" />
                   <div className='flex flex-col'>
-                    <h4 className='font-semibold'>Kasim Balogun</h4>
-                    <h6 className='text-[1vw]'>300 Level, Btech , CPE</h6>
+                    <h4 className='font-semibold'>{profile.fullName}</h4>
+                    <h6 className='text-[1vw]'>{profile.level} Level, Btech , CPE</h6>
                   </div>
                 </div>
                 <div className='flex text-[2vw] gap-3'>

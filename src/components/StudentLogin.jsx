@@ -8,6 +8,8 @@ import { lecturerLoginSchema, studentLoginSchema } from "../components/advSchema
 import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth"; 
 
 
 
@@ -23,11 +25,30 @@ const StudentLogin = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
+    try {
+      if (userType === "student") {
+        const fakeEmail = values.matricNo + "@futa.com"; // convert matric to fake email
+        await signInWithEmailAndPassword(auth, fakeEmail, values.password);
+        navigate("/Dashboard");
+      }
 
-  navigate("/dashboard");
- };
+      if (userType === "lecturer") {
+        await signInWithEmailAndPassword(auth, values.staffEmail, values.Lpassword);
+        navigate("/lecturer-dashboard");
+      }
+    } catch (error) {
+      console.error("Login Error:", error.message);
+
+      if (error.code === "auth/user-not-found") {
+        alert("Account does not exist. Please sign up first.");
+      } else {
+        alert(error.message);
+      }
+    }
+
+    actions.setSubmitting(false);
+  };
+
 
   return (
     <div className='w-full h-screen'>
