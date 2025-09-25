@@ -14,7 +14,7 @@ import Admin from "./components/Admin"
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Result/>} />
+      <Route path="/" element={<Home/>} />
       <Route path="/StudentSignUp" element={<StudentSignUp />} />
       <Route path="/StudentLogin" element={<StudentLogin />} />
       <Route path="/MobileSignUp" element={<MobileSignUp />} />
