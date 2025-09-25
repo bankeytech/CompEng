@@ -121,7 +121,7 @@ const Timetable = () => {
                             </td>
                             <td className={`flex flex-col items-center text-black ${Th}`}>
                                 <span className='border-1 border-black w-4 h-4 bg-green-600 rounded-4xl'></span>
-                                <span>CPE 501</span>
+                                <span>CPE</span>
                             </td>
                             <td className={`${Th}`}>
                                 
@@ -148,7 +148,7 @@ const Timetable = () => {
                             </td>
                             <td  className={`flex flex-col items-center text-black ${Th}`}>
                                <span className='border-1 border-black w-4 h-4 bg-green-600 rounded-4xl'></span>
-                               <span>EEE 531 </span> 
+                               <span>EEE</span> 
                             </td>
                             <td className={`border-r border-gray-300 ${Th}`}>
                                 
@@ -163,7 +163,7 @@ const Timetable = () => {
                             </td>
                             <td className={`flex flex-col items-center text-black ${Th}`}>
                               <span className='border-1 border-black w-4 h-4 bg-[#FF0000] rounded-4xl'></span>
-                              <span>CPE 511</span>
+                              <span>CPE </span>
                             </td>
                             <td className={`${Th}`}>
                                 
@@ -181,7 +181,7 @@ const Timetable = () => {
                             </th>
                             <td className={`flex flex-col items-center text-black ${Th}`}>
                               <span className='border-1 border-black w-4 h-4 bg-[#EAFF00] rounded-4xl'></span>
-                              <span>CPE 521</span>
+                              <span>CPE </span>
                             </td>
                             <td className={`${Th}`}>
                                 
@@ -208,7 +208,7 @@ const Timetable = () => {
                             </td>
                             <td  className={`flex flex-col items-center text-black ${Th}`}>
                                <span className='border-1 border-black w-4 h-4 bg-green-600 rounded-4xl'></span>
-                               <span>EEE 511 </span> 
+                               <span>EEE </span> 
                             </td>
                             <td className={`${Th}`}>
                                 

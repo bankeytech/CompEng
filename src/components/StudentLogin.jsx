@@ -34,7 +34,7 @@ const StudentLogin = () => {
 
       if (userType === "lecturer") {
         await signInWithEmailAndPassword(auth, values.staffEmail, values.Lpassword);
-        navigate("/lecturer-dashboard");
+        navigate("/Admin");
       }
     } catch (error) {
       console.error("Login Error:", error.message);

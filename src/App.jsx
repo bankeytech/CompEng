@@ -9,11 +9,12 @@ import Timetable from "./components/Timetable"
 import PersonalInfo from "./components/PersonalInfo"
 import Course from "./components/Course"
 import Result from "./components/Result"
+import Admin from "./components/Admin"
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<Result/>} />
       <Route path="/StudentSignUp" element={<StudentSignUp />} />
       <Route path="/StudentLogin" element={<StudentLogin />} />
       <Route path="/MobileSignUp" element={<MobileSignUp />} />
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/PersonalInfo" element={<PersonalInfo/>}/>
       <Route path="/Course" element={<Course/>}/>
       <Route path="/Result" element={<Result/>} />
+      <Route path="/Admin" element={<Admin/>} />
     </Routes>
   )
 }

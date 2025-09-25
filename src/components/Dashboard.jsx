@@ -132,8 +132,8 @@ const Dashboard = () => {
             
             <div>             
               <ul className='list-disc pl-30 font-thin'>
-                <li className=''>CPE 501 Assignment</li>
-                <li>EEE 505 Test </li>
+                <li className=''>CPE  Assignment</li>
+                <li>EEE  Test </li>
                 <li>Late Registration</li>
               </ul>
             </div>
@@ -144,7 +144,11 @@ const Dashboard = () => {
           <div className='my-20 flex flex-col gap-4 pl-5 text-[1vw]'>
             <h2 className='font-semibold'>Quick Notification!</h2>
             <h6>You have 4 classes scheduled for today 
-              <span className='text-red-600 pl-10 italic'>Click Here to see more!</span>
+              <Link 
+              to="/Timetable"
+              className='text-red-600 pl-10 italic'>
+                Click Here to see more!
+              </Link>
             </h6>
           </div>
 
