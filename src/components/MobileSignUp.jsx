@@ -6,6 +6,13 @@ import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
 
+const inputFields = [
+  { name: "fullName", type: "text", placeholder: "Full Name" },
+  { name: "matricNo", type: "text", placeholder: "UTME or Matric Number" },
+  { name: "level", type: "text", placeholder: "Level (e.g. 300)" },
+  { name: "email", type: "email", placeholder: "Email Address" },
+];
+
 const MobileSignUp = () => {
   const [showStudentPassword, setShowStudentPassword] = useState(false);
   const [showStudentConfirmPassword, setShowStudentConfirmPassword] = useState(false);
@@ -21,7 +28,7 @@ const MobileSignUp = () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 
-  navigate("/");
+  navigate("/MobileLogin");
  };
   return (
     <div>
@@ -64,17 +71,14 @@ const MobileSignUp = () => {
         <div className='pt-5 flex flex-col w-[68%]'>
           {userType === "student" ? (
           <div className="flex flex-col gap-3">
-            <CustomInput
-              name="matricNo"
-              type="text"
-              placeholder="UTME or Matric Number"                    
-            />
-            
-            <CustomInput         
-              name="email"
-              type="email"
-              placeholder="Email Address"
-            />
+            {inputFields.map((field, index) => (
+              <CustomInput
+                key={index}
+                name={field.name}
+                type={field.type}
+                placeholder={field.placeholder}
+              />
+            ))}
 
             <div className="relative ">
             <CustomInput 

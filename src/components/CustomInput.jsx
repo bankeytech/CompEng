@@ -15,7 +15,7 @@ const CustomInput = ({...props }) => {
         
       />
       <div className="flex items-center justify-end">
-        {meta.touched && meta.error && <div className="error text-[0.8vw]">{meta.error}</div>}
+        {meta.touched && meta.error && <div className="error lg:text-[0.8vw] text-[2.2vw]">{meta.error}</div>}
       </div>
     </>
   );

@@ -5,7 +5,6 @@ import SidePic from "../assets/images/4219290 1.svg"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Form, Formik } from 'formik';
 import { lecturerLoginSchema, studentLoginSchema } from "../components/advSchema";
-import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";

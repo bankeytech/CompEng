@@ -1,35 +1,56 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Form, Formik } from 'formik';
-import { lecturerSchema, studentSchema } from "../components/advSchema";
+import { lecturerLoginSchema, studentLoginSchema } from "../components/advSchema";
 import CustomCheckbox from "../components/CustomCheckbox";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
 import MobilePic from "../assets/images/4219290 1.svg"
-import Wave1 from "../assets/images/wave2.png";
-import Wave2 from "../assets/images/wave2.svg";
+import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth"; 
 
-const MobileSignUp = () => {
-  const [showStudentPassword, setShowStudentPassword] = useState(false);
-  const [showLecturerPassword, setShowLecturerPassword] = useState(false);
 
-  const studentInitialValues = { matricNo: "", email: "", password: "", confirmPassword: "", acceptedTos: false };
-  const lecturerInitialValues = { staffEmail: "", Lpassword: "", LconfirmPassword: "", acceptedTos: false };
+const MobileLogin = () => {
+   const [showStudentPassword, setShowStudentPassword] = useState(false);
+    const [showLecturerPassword, setShowLecturerPassword] = useState(false);
+  
+    const studentInitialValues = { matricNo: "", email: "", password: "", confirmPassword: "", acceptedTos: false };
+    const lecturerInitialValues = { staffEmail: "", Lpassword: "", LconfirmPassword: "", acceptedTos: false };
+  
+    const [userType, setUserType] = useState("student");
+    const navigate = useNavigate();
+  
+    const onSubmit = async (values, actions) => {
+      try {
+        if (userType === "student") {
+          const fakeEmail = values.matricNo + "@futa.com"; // convert matric to fake email
+          await signInWithEmailAndPassword(auth, fakeEmail, values.password);
+          navigate("/Dashboard");
+        }
+  
+        if (userType === "lecturer") {
+          await signInWithEmailAndPassword(auth, values.staffEmail, values.Lpassword);
+          navigate("/Admin");
+        }
+      } catch (error) {
+        console.error("Login Error:", error.message);
+  
+        if (error.code === "auth/user-not-found") {
+          alert("Account does not exist. Please sign up first.");
+        } else {
+          alert(error.message);
+        }
+      }
+  
+      actions.setSubmitting(false);
+    };
 
-  const [userType, setUserType] = useState("student");
-  const navigate = useNavigate();
 
-  const onSubmit = async (values, actions) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-
-  navigate("/");
- };
   return (
     <div className="w-full">
       <Formik               
         initialValues={userType === "student" ? studentInitialValues : lecturerInitialValues}
-        validationSchema={userType === "student" ? studentSchema : lecturerSchema}
+        validationSchema={userType === "student" ? studentLoginSchema : lecturerLoginSchema}
         onSubmit={onSubmit}
         enableReinitialize
       >
@@ -134,7 +155,7 @@ const MobileSignUp = () => {
               Forgot Password?                   
             </span>
           </div>
-         <div className='py-[3vw] mb-[5vw]'>
+          <div className='py-[3vw] mb-[5vw]'>
             <button 
             disabled={isSubmitting}
             type="submit" 
@@ -155,4 +176,4 @@ const MobileSignUp = () => {
   )
 }
 
-export default MobileSignUp
+export default MobileLogin 
