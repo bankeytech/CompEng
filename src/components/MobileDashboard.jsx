@@ -108,10 +108,10 @@ const MobileDashboard = () => {
                         Search
                     </button>
                 </span>
-                <input type="search" name="Search" class="w-full py-5 px-5 pr-40 text-sm rounded-[4vw] 
-                sm:w-auto focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
+                <input type="search" name="Search" class="w-full py-7 px-5 pr-40 text-sm rounded-[4vw] 
+                focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
                 shadow-lg focus:shadow-md transition duration-200"/>
-              </div>
+              </div>  
 
               <div className='bg-[#914272] rounded-3xl flex flex-col p-5 pt-6 text-white'>
                 <div className='flex flex-col'>
