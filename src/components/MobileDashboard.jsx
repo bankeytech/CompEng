@@ -8,8 +8,8 @@ import SidePic from "../assets/images/4219290 1.svg"
 import { FiCalendar } from "react-icons/fi";
 import Elic from "../assets/images/Ellipse 2.svg"
 import { FiMenu, FiX } from "react-icons/fi";
-// import useStudentProfile from "../hooks/useStudentProfile";
-// import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.jpeg"
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.jpeg"
 
 const Basic = "flex items-center justify-between gap-25 text-gray-500 font-light text-[4vw]"
 
@@ -26,8 +26,8 @@ const MobileDashboard = () => {
     { path: "/Result", label: "Result" },
   ];
 
-  // const profile = useStudentProfile();
-  // if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+  const profile = useStudentProfile();
+  if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
    <div>
@@ -85,8 +85,8 @@ const MobileDashboard = () => {
                   <div className='flex items-center gap-3'>
                     <img src={ProfilePic} alt="img" className="w-[15vw]"/>
                     <div className='flex flex-col'>
-                      <h4 className='font-semibold text-[4vw]'>Testing Testin</h4>
-                      <h6 className='text-gray-500 text-[3vw]'>200 Level, B.eng, CPE</h6>
+                      <h4 className='font-semibold text-[4vw]'>{profile.fullName}</h4>
+                      <h6 className='text-gray-500 text-[3vw]'>{profile.level}, B.eng, CPE</h6>
                     </div>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ const MobileDashboard = () => {
                     </span>
                   </h6>
                   <h1 className='font-semibold text-[4.4vw] py-2'>
-                    Welcome back , Testing Testin!!
+                    Welcome back , {profile.fullName}!!
                   </h1>
                   <h6 className='text-[2.4vw]'>
                     Always stay updated in your student portal

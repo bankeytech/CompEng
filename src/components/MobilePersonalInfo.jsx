@@ -8,8 +8,8 @@ import Elic1 from "../assets/images/Ellipse 3.svg"
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FiMaximize2, FiEdit } from "react-icons/fi";
 import { FiMenu, FiX } from "react-icons/fi";
-// import useStudentProfile from "../hooks/useStudentProfile";
-// import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
 
 const Basic = "flex items-center justify-between gap-25 text-gray-500 font-light text-[1.3vw]"
 
@@ -59,8 +59,8 @@ const MobilePersonalInfo = () => {
       { path: "/Timetable", label: "Timetable" },
       { path: "/Result", label: "Result" },
     ];
-  // const profile = useStudentProfile();
-  //   if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+  const profile = useStudentProfile();
+    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
     <div className='relative p-8 flex lg:hidden'>
@@ -117,8 +117,8 @@ const MobilePersonalInfo = () => {
           <div className='flex items-center gap-3'>
             <img src={ProfilePic} alt="img" className="w-[15vw]"/>
             <div className='flex flex-col'>
-              <h4 className='font-semibold text-[4vw]'>Testing Testin</h4>
-              <h6 className='text-gray-500 text-[3vw]'>200 Level, B.eng, CPE</h6>
+              <h4 className='font-semibold text-[4vw]'>{profile.fullName}</h4>
+              <h6 className='text-gray-500 text-[3vw]'>{profile.level}, B.eng, CPE</h6>
             </div>
           </div>
         
@@ -159,7 +159,7 @@ const MobilePersonalInfo = () => {
                   </span>
                 </div>
                 <div className='py-8 flex flex-col items-center justify-center gap-3'>
-                  <h3 className='font-bold text-[5.6vw]'>Testing Testin</h3>
+                  <h3 className='font-bold text-[5.6vw]'>{profile.fullName}</h3>
                   <h3 className='rounded-[4vw] bg-gray-100 px-8 py-2 shadow-lg focus:shadow-lg text-[3.6vw]'>Student</h3>
                 </div>
 
@@ -228,7 +228,7 @@ const MobilePersonalInfo = () => {
                   <h6>Semester</h6>
                   <h6>Matric Number</h6>
                   <h6 className='text-[2.3vw]'>1</h6>
-                  <h6 className='text-[2.3vw]'>CPE/22/0089</h6>
+                  <h6 className='text-[2.3vw]'>{profile.matricNo}</h6>
                 </div>
               </div>
 

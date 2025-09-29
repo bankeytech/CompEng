@@ -7,8 +7,8 @@ import { MdNotificationsNone} from "react-icons/md";
 import Elic1 from "../assets/images/Ellipse 3.svg"
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FiMaximize2, FiEdit } from "react-icons/fi";
-// import useStudentProfile from "../hooks/useStudentProfile";
-// import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
 import MobilePersonalInfo from './MobilePersonalInfo';
 
 const Basic = "flex items-center justify-between gap-25 text-gray-500 font-light text-[1.3vw]"
@@ -48,8 +48,8 @@ const CustomSelect = ({ label, name, options }) => (
 
 
 const PersonalInfo = () => {
-  // const profile = useStudentProfile();
-  //   if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+  const profile = useStudentProfile();
+    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
     <div>
@@ -105,8 +105,8 @@ const PersonalInfo = () => {
               <div className='flex items-center gap-3'>
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
-                  <h4 className='font-semibold'>Testing Testin</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>200 Level, B.eng, CPE</h6>
+                  <h4 className='font-semibold'>{profile.fullName}</h4>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level}, B.eng, CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>
@@ -162,7 +162,7 @@ const PersonalInfo = () => {
                       <h6>Semester</h6>
                       <h6>Matric Number</h6>
                       <h6 className='text-[0.9vw]'>1</h6>
-                      <h6 className='text-[0.9vw]'>CPE/22/0086</h6>
+                      <h6 className='text-[0.9vw]'>{profile.matricNo}</h6>
                     </div>
                   </div>
 
@@ -350,7 +350,7 @@ const PersonalInfo = () => {
                     </span>
                   </div>
                   <div className='py-8 flex flex-col items-center justify-center'>
-                    <h3 className='font-bold text-[1.6vw]'>Testing Testin</h3>
+                    <h3 className='font-bold text-[1.6vw]'>{profile.fullName}</h3>
                     <h3 className='rounded-[4vw] bg-gray-100 px-8 py-2 shadow-lg focus:shadow-lg'>Student</h3>
                   </div>
 
