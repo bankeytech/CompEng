@@ -7,8 +7,9 @@ import { MdNotificationsNone} from "react-icons/md";
 import Elic1 from "../assets/images/Ellipse 3.svg"
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FiMaximize2, FiEdit } from "react-icons/fi";
-import useStudentProfile from "../hooks/useStudentProfile";
-import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
+// import useStudentProfile from "../hooks/useStudentProfile";
+// import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.svg"
+import MobilePersonalInfo from './MobilePersonalInfo';
 
 const Basic = "flex items-center justify-between gap-25 text-gray-500 font-light text-[1.3vw]"
 
@@ -32,8 +33,8 @@ const CustomSelect = ({ label, name, options }) => (
     <label >{label}</label>
     <select
       name={name}
-      className="rounded-[4vw] bg-gray-200 w-[8vw] text-[0.9vw] text-black
-      py-1 px-2 focus:outline-none"
+      className="rounded-[4vw] bg-gray-200 lg:w-[8vw] text-[0.9vw] text-black
+      lg:py-1 px-2 py-2 focus:outline-none"
     >
       <option value="">Select {label}</option>
       {options.map((option, idx) => (
@@ -47,16 +48,17 @@ const CustomSelect = ({ label, name, options }) => (
 
 
 const PersonalInfo = () => {
-  const profile = useStudentProfile();
-    if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+  // const profile = useStudentProfile();
+  //   if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
-    <div className='relative p-10 flex'>
-      <div className=' relative hidden lg:flex'>
-        <header className="relative px-4 pr-13 py-8 text-gray-800 bg-[#914272] rounded-3xl ">
-          <div className="container flex flex-col gap-10 mx-[2vw]">
+    <div>
+      <div className='relative p-10 lg:flex hidden md:flex'>
+      <div className=' relative lg:flex hidden md:flex'>
+        <header className="relative px-4 lg:pr-13 pr-6 py-8 text-gray-800 bg-[#914272] rounded-3xl">
+          <div className="container flex flex-col gap-10 lg:mx-[2vw] mx-[1.5vw]">
             <img src={TopPic} alt="img" className='w-[10vw]'/>
-            <ul className="hidden lg:flex flex-col gap-4 justify-start">
+            <ul className="hidden lg:flex md:flex flex-col gap-4 justify-start">
               {[
                 { path: "/Dashboard", label: "Dashboard" },
                 { path: "/PersonalInfo", label: "Personal Info", active: true },
@@ -90,21 +92,21 @@ const PersonalInfo = () => {
         <div class="flex items-center md:space-x-4 justify-between">
             <div class="relative">
               <span class="absolute inset-y-0 right-0 flex items-center pr-5">
-                  <button type="submit" title="Search" class="p-1  text-gray-500 text-[0.9vw]">
+                  <button type="submit" title="Search" class="p-1 text-gray-500 text-[0.9vw]">
                       Search
                   </button>
               </span>
-              <input type="search" name="Search" class="w-full py-3 px-5 pr-40 text-sm rounded-[4vw] 
-              sm:w-auto focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
+              <input type="search" name="Search" class="lg:w-full w-auto py-3 px-5 lg:pr-40 pr-10  text-sm rounded-[4vw] 
+                focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
               shadow-lg focus:shadow-md transition duration-200"/>
             </div>
 
-            <div className='flex items-center gap-22'>
+            <div className='flex items-center lg:gap-22 gap-5'>
               <div className='flex items-center gap-3'>
                 <img src={ProfilePic} alt="img" />
                 <div className='flex flex-col'>
-                  <h4 className='font-semibold'>{profile.fullName}</h4>
-                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
+                  <h4 className='font-semibold'>Testing Testin</h4>
+                  <h6 className='text-gray-500 text-[1vw]'>200 Level, B.eng, CPE</h6>
                 </div>
               </div>
               <div className='flex text-[2vw] gap-3'>
@@ -141,7 +143,7 @@ const PersonalInfo = () => {
             </div>
 
             <div className='flex gap-5'>
-              <div className='bg-[#914272] w-[70%] rounded-[1.1vw] mt-8 flex items-center justify-between px-5 py-2 pl-7 text-white '>
+              <div className='bg-[#914272] lg:w-[70%] w-full rounded-[1.1vw] mt-8 flex items-center justify-between px-5 py-2 pl-7 text-white '>
                 <div className='flex flex-col w-full gap-6'>
                   <div >
                     <h4 className='flex items-center justify-between text-[1.5vw]'>
@@ -160,7 +162,7 @@ const PersonalInfo = () => {
                       <h6>Semester</h6>
                       <h6>Matric Number</h6>
                       <h6 className='text-[0.9vw]'>1</h6>
-                      <h6 className='text-[0.9vw]'>{profile.matricNo}</h6>
+                      <h6 className='text-[0.9vw]'>CPE/22/0086</h6>
                     </div>
                   </div>
 
@@ -171,7 +173,7 @@ const PersonalInfo = () => {
                 </div>            
               </div>
 
-              <div className='bg-[#914272] w-[30%] rounded-[1.1vw] mt-8 flex justify-between px-4 pl-3 py-3 text-white pb-8'>
+              <div className='bg-[#914272] w-[30%] rounded-[1.1vw] mt-8 lg:flex justify-between px-4 pl-3 py-3 text-white pb-8 hidden'>
                 <div className='flex flex-col w-full'>                 
                     <h4 className='text-[1.5vw]'>
                       Additional Info
@@ -201,7 +203,7 @@ const PersonalInfo = () => {
             </div>
 
             <div className='flex gap-5'>
-              <div className='bg-[#914272] w-[70%] rounded-[1.1vw] mt-8 flex items-center justify-between px-5 py-5 pl-7 text-white '>
+              <div className='bg-[#914272] lg:w-[70%] w-full rounded-[1.1vw] mt-8 flex items-center justify-between px-5 py-5 pl-7 text-white '>
                 <div className='flex flex-col w-full gap-4 '>
                   
                   <h4 className='flex items-center justify-between text-[1.3vw]'>
@@ -223,7 +225,7 @@ const PersonalInfo = () => {
                 </div>            
               </div>
 
-              <div className='bg-[#914272] w-[30%] rounded-[1.1vw] mt-8 flex justify-between py-3 text-white '>
+              <div className='bg-[#914272] w-[30%] rounded-[1.1vw] mt-8 lg:flex justify-between py-3 text-white hidden'>
                 <div className='flex flex-col w-full '>                 
                   <div className=' px-4 pl-3 '>
                     <h4 className='text-[1.5vw]'>
@@ -256,9 +258,82 @@ const PersonalInfo = () => {
                               
                 </div>              
               </div>
+
             </div>
 
+            {/* Mobile TAB */}
+          <div className='w-full md:flex lg:hidden gap-5'>
+            <div className='bg-[#914272] rounded-[1.1vw] w-[50%] mt-6 flex justify-between px-4 pl-3 py-3 text-white pb-8'>
+              <div className='flex flex-col w-full'>                 
+                  <h4 className='text-[1.5vw]'>
+                    Additional Info
+                  </h4>
+              
+                  <div className="flex flex-col gap-5 font-thin py-2">
+                    <div className="flex flex-col gap-2 w-full">
+                      <label className='text-[1.4vw]'>Resume</label>
+                      <input type="text" placeholder='Enter your resume link' className='rounded-[4vw] 
+                        bg-gray-200 placeholder:text-[1.1vw] placeholder:text-black px-3 py-1 '/>
+                    </div>
+                    <div className="gap-3 w-full font-thin">
+                      <h4>Additional Links</h4>
+                      <div className='flex flex-col gap-2 mt-2'>
+                        <CustomSelect 
+                        options={["Facebook", "Twitter", "Instagram", "LinkedIn", "TikTok"]} 
+                      />
+                        <input type="text" placeholder='https://' className='rounded-[4vw] 
+                        bg-gray-200 placeholder:text-[0.9vw] placeholder:text-black px-3 py-1'/>
+                      </div>
+                    </div>
+                  </div>
+                
+                
+              </div>              
+            </div>
+
+            <div className='bg-[#914272] rounded-[1.1vw] w-[50%] mt-6 flex justify-between py-3 text-white'>
+              <div className='flex flex-col w-full '>                 
+                <div className=' px-4 pl-3 '>
+                  <h4 className='text-[1.5vw]'>
+                    Projects
+                  </h4>
+              
+                  <div className="flex flex-col gap-3 font-thin py-2">
+                    <div className="flex flex-col gap-1 w-full ">
+                      <label className='text-[1.4vw]'>Upload github link</label>
+                      <input type="text" placeholder='https://' className='rounded-[4vw] 
+                        bg-gray-200 placeholder:text-[0.9vw] placeholder:text-black px-3 py-1'/>
+                    </div>
+                    <textarea rows={2} 
+                    className='rounded-[1vw] bg-gray-200 placeholder:text-[1vw] placeholder:text-black p-2'
+                    placeholder='Tell more about your project..'></textarea>
+                  </div>
+                </div>
+
+                  <hr className='w-full' />
+
+                <div className='flex flex-col items-start gap-3 px-5 py-2'>
+                  <h4 className='text-[1.5vw]'>
+                    Internship
+                  </h4>
+
+                  <h6 className='text-[1vw] font-thin'>
+                    Nothing to show here right now....
+                  </h6>
+                </div>
+                            
+              </div>              
+            </div>
+
+
+
           </div>
+
+          </div>
+
+          
+
+
           <div className='w-[33%] '>
             <div className='container bg-[#7D7D7D]/20 rounded-[1.1vw] flex flex-col items-center justify-between
              p-1 text-white  shadow-2xl focus:shadow-lg'>
@@ -275,7 +350,7 @@ const PersonalInfo = () => {
                     </span>
                   </div>
                   <div className='py-8 flex flex-col items-center justify-center'>
-                    <h3 className='font-bold text-[1.6vw]'>{profile.fullName}</h3>
+                    <h3 className='font-bold text-[1.6vw]'>Testing Testin</h3>
                     <h3 className='rounded-[4vw] bg-gray-100 px-8 py-2 shadow-lg focus:shadow-lg'>Student</h3>
                   </div>
 
@@ -312,6 +387,13 @@ const PersonalInfo = () => {
 
       
     </div>
+
+
+      <div className='block lg:hidden md:hidden'>
+        <MobilePersonalInfo />
+      </div>
+    </div>
+    
   )
 }
 

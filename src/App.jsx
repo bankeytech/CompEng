@@ -11,11 +11,12 @@ import Course from "./components/Course"
 import Result from "./components/Result"
 import Admin from "./components/Admin"
 import MobileDashboard from "./components/MobileDashboard"
+import MobilePersonalInfo from "./components/MobilePersonalInfo"
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard/>} />
+      <Route path="/" element={<PersonalInfo/>} />
       <Route path="/StudentSignUp" element={<StudentSignUp />} />
       <Route path="/StudentLogin" element={<StudentLogin />} />
       <Route path="/MobileSignUp" element={<MobileSignUp />} />
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/Result" element={<Result/>} />
       <Route path="/Admin" element={<Admin/>} />
       <Route path="/MobileDashboard" element={<MobileDashboard/>} />
+      <Route path="/MobilePersonalInfo" element={<MobilePersonalInfo/>} />
     </Routes>
   )
 }

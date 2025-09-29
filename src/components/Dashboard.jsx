@@ -7,8 +7,8 @@ import { MdNotificationsNone} from "react-icons/md";
 import SidePic from "../assets/images/4219290 1.svg"
 import { FiCalendar } from "react-icons/fi";
 import Elic from "../assets/images/Ellipse 2.svg"
-// import useStudentProfile from "../hooks/useStudentProfile";
-// import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.jpeg"
+import useStudentProfile from "../hooks/useStudentProfile";
+import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FUTA-Logo.jpeg"
 import MobileDashboard from './MobileDashboard';
 
 const Basic = "flex items-center justify-between lg:gap-25 gap-9 text-gray-500 font-light text-[1.3vw]"
@@ -16,8 +16,8 @@ const Basic = "flex items-center justify-between lg:gap-25 gap-9 text-gray-500 f
 const Bbt = "flex flex-col items-center justify-center py-22 font-bold"
 
 const Dashboard = () => {
-  // const profile = useStudentProfile();
-  // if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
+  const profile = useStudentProfile();
+  if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
 
   return (
    <div>
@@ -73,8 +73,8 @@ const Dashboard = () => {
                 <div className='flex items-center gap-3'>
                   <img src={ProfilePic} alt="img" />
                   <div className='flex flex-col'>
-                    <h4 className='font-semibold'>Testing Testin</h4>
-                    <h6 className='text-gray-500 text-[1vw]'>200 Level, B.eng, CPE</h6>
+                    <h4 className='font-semibold'>{profile.fullName}</h4>
+                    <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
                   </div>
                 </div>
                 <div className='flex text-[2vw] gap-3'>
@@ -94,7 +94,7 @@ const Dashboard = () => {
                 </span>
               </h6>
               <h1 className='font-semibold text-[2vw] lg:text-[1.8vw] '>
-                Welcome back , Testing Testin!!
+                Welcome back , {profile.fullName}!!
               </h1>
               <h6 className='font-thin lg:text-[1.5vw] text-[1.3vw]'>
                 Always stay updated in your student portal

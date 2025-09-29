@@ -67,17 +67,17 @@ export default function Course() {
     );
 
   return (
-    <div className="relative p-10 flex">
+    <div className="relative p-10 lg:flex hidden md:flex">
       {/* Sidebar */}
-      <div className="relative hidden lg:flex">
-        <header className="relative px-4 pr-13 py-8 text-gray-800 bg-[#914272] rounded-3xl ">
-          <div className="container flex flex-col gap-10 mx-[2vw] h-screen">
-            <img src={TopPic} alt="img" className="w-[10vw]" />
-            <ul className="hidden lg:flex flex-col gap-4 justify-start">
+      <div className="relative lg:flex hidden md:flex">
+        <header className="relative px-4 lg:pr-13 pr-6 py-8 text-gray-800 bg-[#914272] rounded-3xl">
+          <div className="container flex flex-col gap-10 lg:mx-[2vw] mx-[1.5vw]">
+            <img src={TopPic} alt="img" className='w-[10vw]'/>
+            <ul className="hidden lg:flex md:flex flex-col gap-4 justify-start">
               {[
                 { path: "/Dashboard", label: "Dashboard" },
-                { path: "/PersonalInfo", label: "Personal Info" },
-                { path: "/Course", label: "Courses", active: true },
+                { path: "/PersonalInfo", label: "Personal Info"},
+                { path: "/Course", label: "Courses", active: true  },
                 { path: "/Timetable", label: "Timetable" },
                 { path: "/Result", label: "Result" },
               ].map((item, idx) => (
@@ -90,13 +90,15 @@ export default function Course() {
                   </Link>
                 </li>
               ))}
-            </ul>
+            </ul>      
           </div>
 
-          <div className="flex mx-[2vw] absolute bottom-[2vw]">
-            <Link to="/StudentLogin" className="text-white font-thin">
-              Logout
-            </Link>
+          <div className='flex mx-[2vw] absolute bottom-[2vw]'>
+            <Link 
+            to="/StudentLogin" 
+            className=" text-white font-thin">
+              Logout             
+            </ Link>           
           </div>
         </header>
       </div>
@@ -104,31 +106,32 @@ export default function Course() {
       {/* Main content */}
       <div className="pl-8 flex flex-col gap-8 w-full">
         {/* Top bar */}
-        <div className="flex items-center md:space-x-4 justify-between">
-          <div className="relative">
-            <input
-              type="search"
-              name="Search"
-              className="w-full py-3 px-5 pr-40 text-sm rounded-[4vw] sm:w-auto focus:outline-none bg-gray-100 text-gray-800 shadow-lg transition duration-200"
-              placeholder="Search"
-            />
-          </div>
+         <div class="flex items-center md:space-x-4 justify-between">
+            <div class="relative">
+              <span class="absolute inset-y-0 right-0 flex items-center pr-5">
+                  <button type="submit" title="Search" class="p-1 text-gray-500 text-[0.9vw]">
+                      Search
+                  </button>
+              </span>
+              <input type="search" name="Search" class="lg:w-full w-auto py-3 px-5 lg:pr-40 pr-10  text-sm rounded-[4vw] 
+                focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
+              shadow-lg focus:shadow-md transition duration-200"/>
+            </div>
 
-          <div className="flex items-center gap-22">
-            <div className="flex items-center gap-3">
-              <img src={ProfilePic} alt="img" />
-              <div className="flex flex-col">
-                <h4 className="font-semibold">{profile.fullName}</h4>
-                <h6 className="text-gray-500 text-[1vw]">
-                  {profile.level} Level, B.eng, CPE
-                </h6>
+            <div className='flex items-center lg:gap-22 gap-5'>
+              <div className='flex items-center gap-3'>
+                <img src={ProfilePic} alt="img" />
+                <div className='flex flex-col'>
+                  <h4 className='font-semibold'>{profile.fullName}</h4>
+                  <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
+                </div>
+              </div>
+              <div className='flex text-[2vw] gap-3'>
+                <MdNotificationsNone className="text-gray-700 " />
+                <MdSettings  className="text-gray-700" />               
               </div>
             </div>
-            <div className="flex text-[2vw] gap-3">
-              <MdNotificationsNone className="text-gray-700 " />
-              <MdSettings className="text-gray-700" />
-            </div>
-          </div>
+            
         </div>
 
         {/* Body */}

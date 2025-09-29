@@ -81,15 +81,15 @@ const MobileDashboard = () => {
 
             <div className='flex flex-col gap-8 w-full'>
               <div class="flex items-center md:space-x-4 justify-between">
-                  <div className='flex items-center'>
-                    <div className='flex items-center gap-3'>
-                      <img src={ProfilePic} alt="img" className="w-[15vw]"/>
-                      <div className='flex flex-col'>
-                        <h4 className='font-semibold text-[4vw]'>Testing Testin</h4>
-                        <h6 className='text-gray-500 text-[3vw]'>200 Level, B.eng, CPE</h6>
-                      </div>
+                <div className='flex items-center'>
+                  <div className='flex items-center gap-3'>
+                    <img src={ProfilePic} alt="img" className="w-[15vw]"/>
+                    <div className='flex flex-col'>
+                      <h4 className='font-semibold text-[4vw]'>Testing Testin</h4>
+                      <h6 className='text-gray-500 text-[3vw]'>200 Level, B.eng, CPE</h6>
                     </div>
                   </div>
+                </div>
 
                   <div className="flex items-center justify-between text-[#914272]">            
                     <button
