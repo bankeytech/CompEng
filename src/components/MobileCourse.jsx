@@ -3,11 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import TopPic from "../assets/images/image 1.svg";
 import ProfilePic from "../assets/images/image 2.svg";
-import {
-  MdSettings,
-  MdNotificationsNone,
-  MdDelete as MdDeleteIcon,
-} from "react-icons/md";
+import { MdDelete as MdDeleteIcon,} from "react-icons/md";
 import { HiOutlineDotsHorizontal, HiDotsVertical } from "react-icons/hi";
 import { FiEdit } from "react-icons/fi";
 import { Formik, Field, Form } from "formik";
@@ -40,8 +36,8 @@ export default function MobileCourse() {
   
     const menuItems = [
       { path: "/Dashboard", label: "Dashboard"},
-      { path: "/PersonalInfo", label: "Personal Info", active: true  },
-      { path: "/Course", label: "Courses" },
+      { path: "/PersonalInfo", label: "Personal Info" },
+      { path: "/Course", label: "Courses", active: true  },
       { path: "/Timetable", label: "Timetable" },
       { path: "/Result", label: "Result" },
     ];

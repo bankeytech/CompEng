@@ -15,7 +15,7 @@ const Timetable = () => {
   const profile = useStudentProfile();
     if (!profile) return <p className={`${Bbt}`}><img src={FutaLogo} alt="img" className='w-[10vw]' /> Loading...</p>;
   return (
-    <div className='relative'>
+    <div className='relative lg:block hidden'>
       <div>
         <header className=" text-gray-800 bg-[#914272] pt-15">            
           <div className="container flex justify-end mx-auto">                    
@@ -36,7 +36,7 @@ const Timetable = () => {
             </div>          
           </div>
           <div className='flex items-end justify-center text-white text-[3vw]'>
-             <h4>100 Level Timetable</h4> 
+             <h4>{profile.level} Level Timetable</h4> 
            </div>
         </header>
 
@@ -46,6 +46,7 @@ const Timetable = () => {
               <img src={TopPic} alt="img" className='w-[10vw]'/>
               <ul className="hidden lg:flex flex-col gap-4 justify-start">
                 {[
+                  { path: "/PersonalInfo", label: "..." },
                   { path: "/Dashboard", label: "Dashboard" },
                   { path: "/PersonalInfo", label: "Personal Info" },
                   { path: "/Course", label: "Courses"},
@@ -84,13 +85,13 @@ const Timetable = () => {
             <h5 className='absolute right-10'>WEEK <span className='font-bold'>32, 30th JUL</span></h5>         
          </div>
 
-         <div className='w-[78vw] -z-10 absolute top-[8.5vw] right-3'>
+         <div className='lg:w-[78vw] w-[95vw] -z-10 absolute top-[8.5vw] right-3'>
             <div className="m-1">
               <div className="relative overflow-x-auto">
                 <table className="w-full text-sm text-center text-white">
                     <thead className="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700">
                         <tr>
-                            <th scope="col" className="w-39 h-15 border-r border-gray-300 bg-black ">
+                            <th scope="col" className="lg:w-39 w-50 h-15 border-r border-gray-300 bg-black ">
                                 
                             </th>
                             <th scope="col" className="px-6 py-3 border-r border-gray-300 bg-[#393939]">

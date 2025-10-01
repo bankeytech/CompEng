@@ -8,6 +8,7 @@ import FutaLogo from "../assets/images/Federal-University-of-Technology-Akure-FU
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import AuthContext from "../contexts/AuthContext"; 
+import MobileResult from "./MobileResult";
 
 
 const Bbt = "flex flex-col items-center justify-center py-22 font-bold";
@@ -57,113 +58,119 @@ export default function Result() {
   }
 
   return (
-     <div className="relative p-10 lg:flex hidden md:flex">
-         {/* Sidebar */}
-        <div className="relative lg:flex hidden md:flex">
-          <header className="relative px-4 lg:pr-13 pr-6 py-8 text-gray-800 bg-[#914272] rounded-3xl">
-            <div className="container flex flex-col gap-10 lg:mx-[2vw] mx-[1.5vw]">
-              <img src={TopPic} alt="img" className='w-[10vw]'/>
-              <ul className="hidden lg:flex md:flex flex-col gap-4 justify-start">
-                {[
-                  { path: "/Dashboard", label: "Dashboard" },
-                  { path: "/PersonalInfo", label: "Personal Info"},
-                  { path: "/Course", label: "Courses" },
-                  { path: "/Timetable", label: "Timetable" },
-                  { path: "/Result", label: "Result", active: true },
-                ].map((item, idx) => (
-                  <li key={idx}>
-                    <Link
-                      to={item.path}
-                      className={`text-white ${item.active ? "font-bold" : ""}`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>      
-            </div>
-  
-            <div className='flex mx-[2vw] absolute bottom-[2vw]'>
-              <Link 
-              to="/StudentLogin" 
-              className=" text-white font-thin">
-                Logout             
-              </ Link>           
-            </div>
-          </header>
-        </div>
-
-            {/* Main content */}
-        <div className="pl-8 flex flex-col gap-8 w-full">
-          {/* Top bar */}
-           <div class="flex items-center md:space-x-4 justify-between">
-              <div class="relative">
-                <span class="absolute inset-y-0 right-0 flex items-center pr-5">
-                    <button type="submit" title="Search" class="p-1 text-gray-500 text-[0.9vw]">
-                        Search
-                    </button>
-                </span>
-                <input type="search" name="Search" class="lg:w-full w-auto py-3 px-5 lg:pr-40 pr-10  text-sm rounded-[4vw] 
-                  focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
-                shadow-lg focus:shadow-md transition duration-200"/>
+    <div>
+        <div className="relative p-10 lg:flex hidden md:flex">
+          {/* Sidebar */}
+          <div className="relative lg:flex hidden md:flex">
+            <header className="relative px-4 lg:pr-13 pr-6 py-8 text-gray-800 bg-[#914272] rounded-3xl">
+              <div className="container flex flex-col gap-10 lg:mx-[2vw] mx-[1.5vw] h-screen">
+                <img src={TopPic} alt="img" className='w-[10vw]'/>
+                <ul className="hidden lg:flex md:flex flex-col gap-4 justify-start">
+                  {[
+                    { path: "/Dashboard", label: "Dashboard" },
+                    { path: "/PersonalInfo", label: "Personal Info"},
+                    { path: "/Course", label: "Courses" },
+                    { path: "/Timetable", label: "Timetable" },
+                    { path: "/Result", label: "Result", active: true },
+                  ].map((item, idx) => (
+                    <li key={idx}>
+                      <Link
+                        to={item.path}
+                        className={`text-white ${item.active ? "font-bold" : ""}`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>      
               </div>
+    
+              <div className='flex mx-[2vw] absolute bottom-[2vw]'>
+                <Link 
+                to="/StudentLogin" 
+                className=" text-white font-thin">
+                  Logout             
+                </ Link>           
+              </div>
+            </header>
+          </div>
 
-              <div className='flex items-center lg:gap-22 gap-5'>
-                <div className='flex items-center gap-3'>
-                  <img src={ProfilePic} alt="img" />
-                  <div className='flex flex-col'>
-                    <h4 className='font-semibold'>{profile.fullName}</h4>
-                    <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
+              {/* Main content */}
+          <div className="pl-8 flex flex-col gap-8 w-full">
+            {/* Top bar */}
+            <div class="flex items-center md:space-x-4 justify-between">
+                <div class="relative">
+                  <span class="absolute inset-y-0 right-0 flex items-center pr-5">
+                      <button type="submit" title="Search" class="p-1 text-gray-500 text-[0.9vw]">
+                          Search
+                      </button>
+                  </span>
+                  <input type="search" name="Search" class="lg:w-full w-auto py-3 px-5 lg:pr-40 pr-10  text-sm rounded-[4vw] 
+                    focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50 
+                  shadow-lg focus:shadow-md transition duration-200"/>
+                </div>
+
+                <div className='flex items-center lg:gap-22 gap-5'>
+                  <div className='flex items-center gap-3'>
+                    <img src={ProfilePic} alt="img" />
+                    <div className='flex flex-col'>
+                      <h4 className='font-semibold'>{profile.fullName}</h4>
+                      <h6 className='text-gray-500 text-[1vw]'>{profile.level} Level, B.eng, CPE</h6>
+                    </div>
+                  </div>
+                  <div className='flex text-[2vw] gap-3'>
+                    <MdNotificationsNone className="text-gray-700 " />
+                    <MdSettings  className="text-gray-700" />               
                   </div>
                 </div>
-                <div className='flex text-[2vw] gap-3'>
-                  <MdNotificationsNone className="text-gray-700 " />
-                  <MdSettings  className="text-gray-700" />               
-                </div>
-              </div>
-              
-           </div>
+                
+            </div>
 
-          <div className="flex flex-col w-full">
-            <div className="bg-[#914272] rounded-[1.1vw] px-5 py-5 pl-7 text-white pb-8">
-              <div className="p-10 w-full">
-                  <h2 className="text-[2vw] font-semibold mb-6">
-                    Results for {profile.fullName}
-                  </h2>
+            <div className="flex flex-col w-full">
+              <div className="bg-[#914272] rounded-[1.1vw] px-5 py-5 pl-7 text-white pb-8">
+                <div className="p-10 w-full">
+                    <h2 className="text-[2vw] font-semibold mb-6">
+                      Results for {profile.fullName}
+                    </h2>
 
-                  {results.length === 0 ? (
-                    <p>No results yet.</p>
-                  ) : (
-                    results.map((r) => (
-                      <div key={r.id} className="bg-[#FFFF]/20 rounded-xl shadow p-6 mb-6">
-                        <h3 className="text-[1.6vw]">Semester: {r.id}</h3>
+                    {results.length === 0 ? (
+                      <p>No results yet.</p>
+                    ) : (
+                      results.map((r) => (
+                        <div key={r.id} className="bg-[#FFFF]/20 rounded-xl shadow p-6 mb-6">
+                          <h3 className="text-[1.6vw]">Semester: {r.id}</h3>
 
-                        <div className="grid grid-cols-2 gap-3 w-full py-2 font-semibold text-[1.4vw]">
-                          <span>Course</span>
-                          <span>Grade</span>
+                          <div className="grid grid-cols-2 gap-3 w-full py-2 font-semibold text-[1.4vw]">
+                            <span>Course</span>
+                            <span>Grade</span>
+                          </div>
+
+                          {courses.length > 0 ? (
+                            courses.map((c) => (
+                              <div key={c.code} className="grid grid-cols-2 gap-3 ">
+                                <span>{c.name}</span>
+                                <span>{r.grades?.[c.code] || "-"}</span>
+                              </div>
+                            ))
+                          ) : (
+                            <p>No courses registered yet.</p>
+                          )}
+
+                          <p className="mt-2 font-bold">Present-GPA = {r.GPA}</p>
                         </div>
+                      ))
+                    )}
+                </div>    
+              </div>
+            </div>
+          </div>
 
-                        {courses.length > 0 ? (
-                          courses.map((c) => (
-                            <div key={c.code} className="grid grid-cols-2 gap-3 ">
-                              <span>{c.name}</span>
-                              <span>{r.grades?.[c.code] || "-"}</span>
-                            </div>
-                          ))
-                        ) : (
-                          <p>No courses registered yet.</p>
-                        )}
+          
+      </div>
 
-                        <p className="mt-2 font-bold">Present-GPA = {r.GPA}</p>
-                      </div>
-                    ))
-                  )}
-               </div>    
-             </div>
-           </div>
-        </div>
-
-        
+      <div className='block lg:hidden md:hidden'>
+        <MobileResult />
+      </div>
     </div>
   );
 }

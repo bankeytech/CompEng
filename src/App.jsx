@@ -13,6 +13,7 @@ import Admin from "./components/Admin"
 import MobileDashboard from "./components/MobileDashboard"
 import MobilePersonalInfo from "./components/MobilePersonalInfo"
 import MobileCourse from "./components/MobileCourse";
+import MobileResult from "./components/MobileResult";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
       <Route path="/MobileDashboard" element={<MobileDashboard/>} />
       <Route path="/MobilePersonalInfo" element={<MobilePersonalInfo/>} />
       <Route path="/MobileCourse" element={<MobileCourse/>}/>
+      <Route path="/MobileResult" element={<MobileResult/>} />
     </Routes>
   )
 }
