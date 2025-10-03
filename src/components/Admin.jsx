@@ -106,7 +106,7 @@ function AdminPage({ user }) {
     setGrades({ ...grades, [courseCode]: grade });
   };
 
-  if (role !== "") {
+  if (role !== "admin") {
     return (
       <div className="flex items-center justify-center h-screen">
         <h2 className="text-red-600 text-2xl font-bold">
